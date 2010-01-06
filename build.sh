@@ -10,9 +10,9 @@ PHARO_VM="/usr/local/lib/squeak/3.11.3-2135/squeakvm"
 PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration
-BUILD_PATH="${WORKSPACE:=`readlink -f builds`}"
-SCRIPT_PATH="/home/apache/hudson.lukas-renggli.ch/scripts"
-IMAGES_PATH="/home/apache/hudson.lukas-renggli.ch/images"
+BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
+IMAGES_PATH="$(readlink -f $(dirname $0))/images"
+SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
 
 # build configuration
 SCRIPTS=()
@@ -30,10 +30,8 @@ while getopts ":i:o:s:?" OPT ; do
 	case "$OPT" in
 
 		# input
-    	i)	if [ -f "$BUILD_DIR/$OPTARG/$OPTARG.image" ] ; then
-				INPUT_IMAGE="$BUILD_DIR/$OPTARG/$OPTARG.image"
-			elif [ -f "$OPTARG" ] ; then
-				INPUT_IMAGE=`readlink -f "$OPTARG"`
+    	i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG.image"
 			else
@@ -57,12 +55,8 @@ while getopts ":i:o:s:?" OPT ; do
 		;;
 
 		# script
-		s)	if [ -f "$OPTARG" ] ; then
-				SCRIPTS=("${SCRIPTS[@]}" `readlink -f "$OPTARG"`)
-			elif [ -f "$SCRIPT_PATH/$OPTARG" ] ; then
-                SCRIPTS=("${SCRIPTS[@]}" "$SCRIPT_PATH/$OPTARG")
-			elif [ -f "$SCRIPT_PATH/$OPTARG.st" ] ; then
-                SCRIPTS=("${SCRIPTS[@]}" "$SCRIPT_PATH/$OPTARG.st")
+		s)	if [ -f "$SCRIPTS_PATH/$OPTARG.st" ] ; then
+                SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/$OPTARG.st")
 			else
 				echo "$0: invalid script ($OPTARG)"
 				exit 1

@@ -49,7 +49,7 @@ while getopts ":i:o:s:?" OPT ; do
 		# output
 		o)	OUTPUT_NAME="$OPTARG"
 			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME"
-			OUTPUT_SCRIPT="$OUTPUT_PATH/loader.st"
+			OUTPUT_SCRIPT="$OUTPUT_PATH/$OUTPUT_NAME.st"
 			OUTPUT_IMAGE="$OUTPUT_PATH/$OUTPUT_NAME.image"
 			OUTPUT_CHANGES="$OUTPUT_PATH/$OUTPUT_NAME.changes"
 		;;
@@ -93,7 +93,7 @@ cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
 cp "$INPUT_CHANGES" "$OUTPUT_CHANGES"
 
 # prepare script file
-for FILE in $SCRIPTS ; do
+for FILE in "${SCRIPTS[@]}" ; do
 	cat "$FILE" >> "$OUTPUT_SCRIPT"
 	echo "!" >> "$OUTPUT_SCRIPT"
 done
@@ -103,8 +103,6 @@ echo '!' >> "$OUTPUT_SCRIPT"
 
 # build image
 "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT"
-rm -rf "$OUTPUT_PATH/package-cache"
-rm -rf "$OUTPUT_SCRIPT"
 
 # done
 exit 0

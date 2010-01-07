@@ -15,15 +15,30 @@ findClassesForCategories: aCollection
 			select: [ :each | (each includesBehavior: TestCase) and: [ each isAbstract not ] ] ].
 	^ items asSet! !
 
+!HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 19:54'!
+findClassesForPackages: aCollection
+    | items |
+    items := aCollection gather: [ :category |
+        (PackageInfo named: category) classes
+            select: [ :each | (each includesBehavior: TestCase) and: [ each isAbstract not ] ] ].
+    ^ items asSet! !
+
 !HudsonTestReport class methodsFor: 'instance creation' stamp: 'yc 12/30/2009 21:17'!
 on: aTestResult
 	^ self new initializeOn: aTestResult! !
 
 !HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 20:01'!
+reportTestsInPackages: aCollectionOfPackages
+    aCollectionOfPackages do: [:each | | testResult |
+        testResult := self runTestCases: (self findClassesForPackages: (Array with: each)).
+        (self on: testResult) writeReport: each in: SmalltalkImage current imagePath.
+        ]! !
+
+!HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 20:01'!
 reportTestsInCategories: aCollectionOfCategories
 	aCollectionOfCategories do: [:each | | testResult |
 		testResult := self runTestCases: (self findClassesForCategories: (Array with: each)).
-		(self on: testResult) writeReport: each in: FileDirectory default pathName.
+		(self on: testResult) writeReport: each in: SmalltalkImage current imagePath.
 		]! !
 
 !HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 19:53'!
@@ -103,5 +118,3 @@ writeXmlOn: aStream suiteName: suiteName testCase: aTestCase result: passed
 			aStream tab; tab; nextPutAll: '</failure>'; cr.
 			aStream tab; nextPutAll: '</testcase>'; cr.
 			]! !
-
-HudsonTestReport reportTestsInCategories: Smalltalk organization categories

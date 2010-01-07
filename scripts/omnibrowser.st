@@ -5,7 +5,7 @@ Gofer new
 	package: 'Refactoring-Core';
 	package: 'Refactoring-Spelling';
 	load.
-
+!
 "OmniBrowser"
 Gofer new
 	renggli: 'omnibrowser';
@@ -17,7 +17,7 @@ Gofer new
 	package: 'OB-Regex';
 	package: 'OB-SUnitIntegration';
 	load.
-
+!
 "Tools"
 Gofer new
 	renggli: 'unsorted';
@@ -25,7 +25,7 @@ Gofer new
 	package: 'RoelTyper';
 	package: 'ECompletion';
 	package: 'ECompletionOmniBrowser';
- 	load.
-
+	load.
+!
 "Select Tools"
 SystemBrowser default: (Smalltalk at: #OBSystemBrowserAdaptor).

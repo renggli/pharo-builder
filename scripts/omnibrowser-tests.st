@@ -4,7 +4,7 @@ Gofer new
 	package: 'AST-Tests';
 	package: 'Refactoring-Tests';
 	load.
-
+!
 "OmniBrowser"
 Gofer new
 	renggli: 'omnibrowser';
@@ -14,6 +14,6 @@ Gofer new
 	package: 'OB-Tests-Morphic';
 	package: 'OB-Tests-Standard';
 	load.
-
-"Run the Test"
+!
+"Run the Refactoring and OmniBrowser Tests"
 HudsonTestReport reportTestsInPackages: #('AST-Tests' 'Refactoring-Tests' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard').

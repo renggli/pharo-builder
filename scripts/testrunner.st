@@ -1,5 +1,3 @@
-SystemOrganization addCategory: #HudsonBuildTools!
-
 Object subclass: #HudsonTestReport
 	instanceVariableNames: 'testResult'
 	classVariableNames: ''
@@ -46,8 +44,7 @@ reportTestsInCategories: aCollectionOfCategories reportInDir: reportsDir
 	aCollectionOfCategories do: [:each | | testResult |
 		testResult := self runTestCases: (self findClassesForCategories: (Array with: each)).
 		(self on: testResult) writeReport: each in: reportsDir.
-		]
-! !
+		]! !
 
 !HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 20:04'!
 runTestCases: aCollectionOfTestClasses
@@ -59,12 +56,10 @@ runTestCases: aCollectionOfTestClasses
 !HudsonTestReport class methodsFor: 'reporting' stamp: 'yc 1/3/2010 20:04'!
 runTests: aCollectionOfTestClassNames
 	^ self runTestCases: 
-		(aCollectionOfTestClassNames collect:  [ :each | Smalltalk classNamed: each])
-! !
+		(aCollectionOfTestClassNames collect:  [ :each | Smalltalk classNamed: each])! !
 
 !HudsonTestReport methodsFor: 'initialization' stamp: 'yc 12/30/2009 21:18'!
 initializeOn: aTestResult
-
 	testResult := aTestResult! !
 
 !HudsonTestReport methodsFor: 'accessing' stamp: 'yc 12/30/2009 21:52'!
@@ -81,8 +76,7 @@ writeReport: category in: testReportsDir
 		ifFalse: [
 			s := StandardFileStream forceNewFileNamed: category, '.xml' ].
 	self writeXmlOn: s suiteName: category.
-	s close.
-! !
+	s close! !
 
 !HudsonTestReport methodsFor: 'reporting' stamp: 'yc 1/3/2010 21:28'!
 writeXmlOn: aStream suiteName: suiteName
@@ -94,8 +88,7 @@ writeXmlOn: aStream suiteName: suiteName
 		[ :each | self writeXmlOn: aStream suiteName: suiteName testCase: each result: false ].
 	self testResult unexpectedErrors do:
 		[ :each | self writeXmlOn: aStream suiteName: suiteName testCase: each result: false ].
-	aStream nextPutAll: '</testsuite>'; cr.
-! !
+	aStream nextPutAll: '</testsuite>'; cr! !
 
 !HudsonTestReport methodsFor: 'reporting' stamp: 'yc 1/3/2010 21:27'!
 writeXmlOn: aStream suiteName: suiteName testCase: aTestCase result: passed
@@ -118,3 +111,5 @@ writeXmlOn: aStream suiteName: suiteName testCase: aTestCase result: passed
 			aStream tab; tab; nextPutAll: '</failure>'; cr.
 			aStream tab; nextPutAll: '</testcase>'; cr.
 			]! !
+
+HudsonTestReport name " required to load properly "

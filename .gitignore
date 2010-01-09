@@ -1,2 +1,5 @@
+.AppleDouble
+
 images/*
 builds/*
+package-cache/*

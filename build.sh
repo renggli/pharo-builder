@@ -11,8 +11,10 @@ PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration
 BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
+
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
 SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
+PACKAGE_CACHE="$(readlink -f $(dirname $0))/package-cache"
 
 # build configuration
 SCRIPTS=()
@@ -52,6 +54,7 @@ while getopts ":i:o:s:?" OPT ; do
 			OUTPUT_SCRIPT="$OUTPUT_PATH/$OUTPUT_NAME.st"
 			OUTPUT_IMAGE="$OUTPUT_PATH/$OUTPUT_NAME.image"
 			OUTPUT_CHANGES="$OUTPUT_PATH/$OUTPUT_NAME.changes"
+			OUTPUT_CACHE="$OUTPUT_PATH/package-cache"
 		;;
 
 		# script
@@ -87,6 +90,7 @@ if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi
 mkdir -p "$OUTPUT_PATH"
+ln -s "$PACKAGE_CACHE" "$OUTPUT_CACHE"
 
 # prepare image file
 cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
@@ -103,6 +107,9 @@ echo '!' >> "$OUTPUT_SCRIPT"
 
 # build image
 "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT"
+
+# clear cache
+rm -f "$OUTPUT_CACHE"
 
 # done
 exit 0

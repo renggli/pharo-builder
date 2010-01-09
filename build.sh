@@ -24,9 +24,9 @@ SCRIPTS=("$SCRIPTS_PATH/before.st")
 # help function
 function display_help() {
 	echo "$0 -i input -o output {-s script} "
-	echo " -i input product name, or image from cache"
+	echo " -i input product name, or image from images-directory"
 	echo " -o output product name"
-	echo " -s one or more scripts to be used to build the image"
+	echo " -s one or more scripts from the scripts-directory to build the image"
 }
 
 # parse options

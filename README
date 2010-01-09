@@ -1,0 +1,80 @@
+======
+PART A - Prepare image and adjust build scripts
+======
+
+Unzip the build scripts
+- choose a build home directory, and unzip the files there
+- there should be an empty "images" directory
+
+Create an initial build image
+- get a distribution image (e.g. http://www.pharo-project.org/pharo-download)
+- put the image in the images directory
+- start the image, and refresh Gofer using:
+
+<code>
+Utilities updateFromServer.
+[ Gofer gofer load ]
+        on: Error
+        do: [ :err | err retry ].
+Gofer gofer recompile.
+</code>
+
+- this update should be part of the build script, but it was not working for me when it's run from a startup script.
+- save the image as "core"
+
+Adjust build scripts
+- edit the core.sh and pier.sh scripts, setting suitable values for:
+    SQUEAK_VM
+    IMAGES_HOME
+    SCRIPTS_HOME
+- you may have to adjust the repository locations too
+
+These sample build scripts are just a starting point for creating your own build scripts for your project. The core.sh script does not actually load any packages, it just runs the test cases in the PharoCore image. The pier.sh script loads Seaside/Magritte/Pier into the core image, then runs the test cases.
+
+
+======
+PART B - Integrate with Hudson
+======
+
+Download hudson.war from http://hudson-ci.org/
+
+Start the Hudson server.
+- run something like:
+    WARFILE=$HOME/apps/hudson/hudson.war
+    LOGFILE=hudson.log
+    nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
+- port 9090 is used to avoid conflict with Seaside on 8080
+- goto the Hudson dashboard at http://localhost:9090
+
+Add new Hudson job
+- from Hudson dashboard, select "New Job"
+- fill in a job name, e.g. "Core"
+- choose the "Build a free-style software project" radio button
+- click on OK
+
+Configure the new job
+- you should be sent to the job configuration screen, after the previous step
+- in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
+- in the Command textarea that appears, type the full path to the build script: e.g. /Users/yanni/work/public/Core/pier.sh
+- in the "Post-build Actions" section, enable "Publish JUnit test result report"
+- enter "test-reports/*.xml" into the text input labelled "Test report XMLs" that appears.
+- save the configuration changes (i.e. click "Save").
+
+Run the build job
+- after saving the new job, you should already be in the new job's control screen. If not, you can navigate there from the dashboard.
+- start a build by clicking on the "Build Now" link
+
+=====
+HINTS
+=====
+
+1. Click on "Workspace" to see the "Wipe Out Workspace" link. If a PharoDebug.log file is generated, it will be more easy to spot, if the workspace was originally cleaned out.
+
+2. Test your build script in a headful image beforehand. Any flaw will cause the build to stall, and you'll need to abort it (using the Hudson interface), then look at the PharoDebug.log to figure out what went wrong.
+
+3. If the package-cache directory known to your build image still exists, then it will be used (and your packages will appear there, instead of in the Hudson workspace). If it does not exist, then a new package-cache directory will be created in the Hudson job workspace.
+
+4. Monitor the package-cache in the Workspace, to get an idea of the progress of the build. The pier.sh build runs in a 3.5 minutes, building from a local file repository, on a MacBook.
+
+5. Hudson timeout plugin - I've not tried this yet, but if you have a build script error, your build does not abort on its own (or, I've not waited long enough).
+

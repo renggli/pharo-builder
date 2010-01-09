@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# build -- Builds Pharo images using a series of Smalltalk scripts and an image name
+# build -- Builds Pharo images using a series of Smalltalk scripts. Best to
+#   used together with Hudson.
 #
+# Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
 #
 
@@ -22,7 +24,7 @@ SCRIPTS=("$SCRIPTS_PATH/before.st")
 # help function
 function display_help() {
 	echo "$0 -i input -o output {-s script} "
-	echo " -i input product name, local image path, or image from cache"
+	echo " -i input product name, or image from cache"
 	echo " -o output product name"
 	echo " -s one or more scripts to be used to build the image"
 }

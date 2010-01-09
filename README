@@ -1,40 +1,32 @@
-======
 PART A - Prepare image and adjust build scripts
-======
+===============================================
 
-Unzip the build scripts
-- choose a build home directory, and unzip the files there
-- there should be an empty "images" directory
+Install the support scripts
+- choose a build home directory, and clone the repository there
+  git clone git://github.com/renggli/builder.git
+- there should be an empty "images", "cache" and "builds" directory
 
 Create an initial build image
 - get a distribution image (e.g. http://www.pharo-project.org/pharo-download)
 - put the image in the images directory
-- start the image, and refresh Gofer using:
-
-<code>
-Utilities updateFromServer.
-[ Gofer gofer load ]
-        on: Error
-        do: [ :err | err retry ].
-Gofer gofer recompile.
-</code>
-
 - this update should be part of the build script, but it was not working for me when it's run from a startup script.
-- save the image as "core"
 
-Adjust build scripts
-- edit the core.sh and pier.sh scripts, setting suitable values for:
-    SQUEAK_VM
-    IMAGES_HOME
-    SCRIPTS_HOME
-- you may have to adjust the repository locations too
+Review the build scripts
+- before.st is run prior to any build
+- after.st is run after any build
+- all the other scripts are example configurations
 
-These sample build scripts are just a starting point for creating your own build scripts for your project. The core.sh script does not actually load any packages, it just runs the test cases in the PharoCore image. The pier.sh script loads Seaside/Magritte/Pier into the core image, then runs the test cases.
+The cache directory contains the shared package cache of all builds. It is initially empty.
+
+The builds directory is only used when the build script is called from the command-line and is normally empty.
+
+The generic build script build.sh works in this directory structure. Preferably it is called from Hudson, but you can also use it from the command line.
+
+The sample builds scripts are just a starting point for creating your own build scripts for your project.
 
 
-======
 PART B - Integrate with Hudson
-======
+==============================
 
 Download hudson.war from http://hudson-ci.org/
 
@@ -55,9 +47,19 @@ Add new Hudson job
 Configure the new job
 - you should be sent to the job configuration screen, after the previous step
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
-- in the Command textarea that appears, type the full path to the build script: e.g. /Users/yanni/work/public/Core/pier.sh
+- in the command textarea that appears, type the build specification (adapt the paths to your installation):
+
+  #!/bin/bash
+
+  /var/bin/builder/build.sh -i PharoCore-1.0-10505rc1 -s gofer -s killtests -s settings -o core
+
+  /var/bin/builder/build.sh -i core -s omnibrowser -o omnibrowser
+  /var/bin/builder/build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
+
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
-- enter "test-reports/*.xml" into the text input labelled "Test report XMLs" that appears.
+- enter "**/*.xml" into the text input labelled "Test report XMLs" that appears.
+- in the "Post-build Actions" section, enable "Archive the artifacts"
+- enter the "Files to archive" as "**/*.image, **/*.changes", and the "Files to Exclude" as "**/*-tests.*"
 - save the configuration changes (i.e. click "Save").
 
 Run the build job
@@ -72,9 +74,5 @@ HINTS
 
 2. Test your build script in a headful image beforehand. Any flaw will cause the build to stall, and you'll need to abort it (using the Hudson interface), then look at the PharoDebug.log to figure out what went wrong.
 
-3. If the package-cache directory known to your build image still exists, then it will be used (and your packages will appear there, instead of in the Hudson workspace). If it does not exist, then a new package-cache directory will be created in the Hudson job workspace.
-
-4. Monitor the package-cache in the Workspace, to get an idea of the progress of the build. The pier.sh build runs in a 3.5 minutes, building from a local file repository, on a MacBook.
-
-5. Hudson timeout plugin - I've not tried this yet, but if you have a build script error, your build does not abort on its own (or, I've not waited long enough).
+3. Hudson timeout plugin - I've not tried this yet, but if you have a build script error, your build does not abort on its own (or, I've not waited long enough).
 

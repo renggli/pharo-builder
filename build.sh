@@ -16,7 +16,7 @@ BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
 
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
 SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
-PACKAGE_CACHE="$(readlink -f $(dirname $0))/package-cache"
+PACKAGE_CACHE="$(readlink -f $(dirname $0))/cache"
 
 # build configuration
 SCRIPTS=("$SCRIPTS_PATH/before.st")

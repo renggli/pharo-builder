@@ -2,4 +2,4 @@
 
 images/*
 builds/*
-package-cache/*
+cache/*

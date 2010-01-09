@@ -17,7 +17,7 @@ SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
 PACKAGE_CACHE="$(readlink -f $(dirname $0))/package-cache"
 
 # build configuration
-SCRIPTS=("$SCRIPTS_PATH/setUp.st")
+SCRIPTS=("$SCRIPTS_PATH/before.st")
 
 # help function
 function display_help() {

@@ -1,34 +1,26 @@
 PART A - Prepare image and adjust build scripts
 ===============================================
 
-Install the support scripts
-- choose a build home directory, and clone the repository there
-  git clone git://github.com/renggli/builder.git
-- there should be an empty "images", "cache" and "builds" directory
+Install the support scripts, either by downloading the latest code directly from GitHub <http://github.com/renggli/builder/zipball/master> or by cloning the Git repository:
 
-Create an initial build image
-- get a distribution image (e.g. http://www.pharo-project.org/pharo-download)
-- put the image in the images directory
-- this update should be part of the build script, but it was not working for me when it's run from a startup script.
+	git clone git://github.com/renggli/builder.git
+	
+You should get a directory structure with several empty directories, this readme file and the build.sh bash script.
 
-Review the build scripts
-- before.st is run prior to any build
-- after.st is run after any build
-- all the other scripts are example configurations
+1. Create an initial build image that will be used as the source for all builds. Get a distribution image from <http://www.pharo-project.org/pharo-download> and unzip the image in the "images" directory.
 
-The cache directory contains the shared package cache of all builds. It is initially empty.
+2. Review or create your own build scripts in the directory "scripts". There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff. Currently this is mostly done using Gofer, but later something more sophisticated like Mason could be used. The sample builds scripts are just a starting point for creating your own build scripts for your own projects.
 
-The builds directory is only used when the build script is called from the command-line and is normally empty.
+3. The "cache" directory contains the shared package cache of all builds. It is initially empty.
 
-The generic build script build.sh works in this directory structure. Preferably it is called from Hudson, but you can also use it from the command line.
+4. The "builds" directory is only used when the build script is called from the command-line. Normally it is empty.
 
-The sample builds scripts are just a starting point for creating your own build scripts for your project.
-
+The generic build script build.sh works in the described directory structure. Preferably it is called from Hudson, but you can also use it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
 
 PART B - Integrate with Hudson
 ==============================
 
-Download hudson.war from http://hudson-ci.org/
+Download hudson.war from <http://hudson-ci.org/>.
 
 Start the Hudson server.
 - run something like:
@@ -51,22 +43,23 @@ Configure the new job
 
   #!/bin/bash
 
-  /var/bin/builder/build.sh -i PharoCore-1.0-10505rc1 -s gofer -s killtests -s settings -o core
+  /var/bin/builder/build.sh -i PharoCore-1.0-10505rc1 -s gofer -s settings -o core
 
   /var/bin/builder/build.sh -i core -s omnibrowser -o omnibrowser
   /var/bin/builder/build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
 
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*.xml" into the text input labelled "Test report XMLs" that appears.
+
 - in the "Post-build Actions" section, enable "Archive the artifacts"
 - enter the "Files to archive" as "**/*.image, **/*.changes", and the "Files to Exclude" as "**/*-tests.*"
-- save the configuration changes (i.e. click "Save").
+
+- save the configuration changes.
 
 Run the build job
 - after saving the new job, you should already be in the new job's control screen. If not, you can navigate there from the dashboard.
 - start a build by clicking on the "Build Now" link
 
-=====
 HINTS
 =====
 

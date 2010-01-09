@@ -17,7 +17,7 @@ SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
 PACKAGE_CACHE="$(readlink -f $(dirname $0))/package-cache"
 
 # build configuration
-SCRIPTS=()
+SCRIPTS=("$SCRIPTS_PATH/setUp.st")
 
 # help function
 function display_help() {
@@ -97,13 +97,12 @@ cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
 cp "$INPUT_CHANGES" "$OUTPUT_CHANGES"
 
 # prepare script file
+SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
+
 for FILE in "${SCRIPTS[@]}" ; do
 	cat "$FILE" >> "$OUTPUT_SCRIPT"
 	echo "!" >> "$OUTPUT_SCRIPT"
 done
-echo '"Snapshot Image and Quit"' >> "$OUTPUT_SCRIPT"
-echo 'SmalltalkImage current snapshot: true andQuit: true.' >> "$OUTPUT_SCRIPT"
-echo '!' >> "$OUTPUT_SCRIPT"
 
 # build image
 "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT"

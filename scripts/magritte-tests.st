@@ -1,2 +1,2 @@
 "Run the Magritte Tests"
-HudsonTestReport reportTestsInPackages: #('Magritte-Tests').
+HDTestReport runPackages: #('Magritte-Tests').

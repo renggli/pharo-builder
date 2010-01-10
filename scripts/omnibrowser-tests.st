@@ -16,4 +16,4 @@ Gofer new
 	load.
 !
 "Run the Refactoring and OmniBrowser Tests"
-HudsonTestReport reportTestsInPackages: #('AST-Tests' 'Refactoring-Tests' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard').
+HDTestReport runPackages: #('AST-Tests' 'Refactoring-Tests' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard').

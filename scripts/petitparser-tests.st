@@ -1,3 +1,3 @@
 "Run the PetitParser Tests"
-HudsonTestReport reportTestsInPackages: #('PetitParser' 'PetitSmalltalk' 'PetitAnalyzer').
+HDTestReport runPackages: #('PetitParser' 'PetitSmalltalk' 'PetitAnalyzer').
 

@@ -16,7 +16,7 @@ BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
 
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
 SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
-PACKAGE_CACHE="$(readlink -f $(dirname $0))/cache"
+BUILD_CACHE="$(readlink -f $(dirname $0))/cache"
 
 # build configuration
 SCRIPTS=("$SCRIPTS_PATH/before.st")
@@ -92,7 +92,8 @@ if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi
 mkdir -p "$OUTPUT_PATH"
-ln -s "$PACKAGE_CACHE" "$OUTPUT_CACHE"
+mkdir -p "$BUILD_CACHE/$OUTPUT_NAME"
+ln -s "$BUILD_CACHE/$OUTPUT_NAME" "$OUTPUT_CACHE"
 
 # prepare image file
 cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"

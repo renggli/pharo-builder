@@ -23,9 +23,18 @@ Gofer new
 	package: 'Pier-Documents';
 	package: 'Pier-EditorEnh';
 	package: 'Pier-Google';
+	package: 'Pier-Design';
 	package: 'Pier-Links';
 	package: 'Pier-Randomizer';
 	package: 'Pier-TagCloud';
 	package: 'Pier-Slideshow';
+	package: 'Pier-Twitter';
+	package: 'Pier-Book';
+	package: 'Pier-DesignChooser';
 	package: 'Pier-Setup';
 	load.
+!
+"Install Setup"
+PRLoader setupPier.
+!
+

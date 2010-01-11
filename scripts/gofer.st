@@ -4,4 +4,5 @@
 	do: [ :err | err retry ].
 Gofer upgrade; upgrade.
 !
+"Remove empty categories"
 Smalltalk organization removeEmptyCategories.

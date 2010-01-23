@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# build -- Builds Pharo images using a series of Smalltalk scripts. Best to
-#   used together with Hudson.
+# build.sh -- Builds Pharo images using a series of Smalltalk
+#   scripts. Best to used together with Hudson.
 #
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>

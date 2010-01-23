@@ -20,4 +20,5 @@ Smalltalk allClassesAndTraitsDo: [ :each |
 	Symbol compactSymbolTable ].
 !
 "Save and Quit"
-SmalltalkImage current snapshot: true andQuit: true.
+WorldState addDeferredUIMessage: [
+	SmalltalkImage current snapshot: true andQuit: true ].

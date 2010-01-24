@@ -23,7 +23,7 @@ SCRIPTS=("$SCRIPTS_PATH/before.st")
 
 # help function
 function display_help() {
-	echo "$0 -i input -o output {-s script} "
+	echo "$(basename $0) -i input -o output {-s script} "
 	echo " -i input product name, or image from images-directory"
 	echo " -o output product name"
 	echo " -s one or more scripts from the scripts-directory to build the image"
@@ -39,13 +39,13 @@ while getopts ":i:o:s:?" OPT ; do
 			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG.image"
 			else
-				echo "$0: input image not found ($OPTARG)"
+				echo "$(basename $0): input image not found ($OPTARG)"
 				exit 1
 			fi
 
 			INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"
 			if [ ! -f "$INPUT_CHANGES" ] ; then
-				echo "$0: input changes not found ($INPUT_CHANGES)"
+				echo "$(basename $0): input changes not found ($INPUT_CHANGES)"
 				exit 1
 			fi
 		;;
@@ -57,13 +57,14 @@ while getopts ":i:o:s:?" OPT ; do
 			OUTPUT_IMAGE="$OUTPUT_PATH/$OUTPUT_NAME.image"
 			OUTPUT_CHANGES="$OUTPUT_PATH/$OUTPUT_NAME.changes"
 			OUTPUT_CACHE="$OUTPUT_PATH/package-cache"
+			OUTPUT_DEBUG="$OUTPUT_PATH/PharoDebug.log"
 		;;
 
 		# script
 		s)	if [ -f "$SCRIPTS_PATH/$OPTARG.st" ] ; then
                 SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/$OPTARG.st")
 			else
-				echo "$0: invalid script ($OPTARG)"
+				echo "$(basename $0): invalid script ($OPTARG)"
 				exit 1
 			fi
 		;;
@@ -78,12 +79,12 @@ done
 
 # check required parameters
 if [ -z "$INPUT_IMAGE" ] ; then
-	echo "$0: no input product name given"
+	echo "$(basename $0): no input product name given"
 	exit 1
 fi
 
 if [ -z "$OUTPUT_IMAGE" ] ; then
-	echo "$0: no output product name given"
+	echo "$(basename $0): no output product name given"
 	exit 1
 fi
 
@@ -107,11 +108,26 @@ for FILE in "${SCRIPTS[@]}" ; do
 	echo "!" >> "$OUTPUT_SCRIPT"
 done
 
-# build image
-"$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT"
+# build image in the background
+exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 
-# clear cache
+# wait for the process to terminate, or a debug log
+if [ $! ] ; then
+	while kill -0 $! 2> /dev/null ; do 
+		if [ -f "$OUTPUT_DEBUG" ] ; then
+			kill -s SIGKILL $! 2> /dev/null
+			echo "$(basename $0): build failed ($OUTPUT_DEBUG)"
+			exit 1
+		fi
+		sleep 1
+	done
+else
+	echo "$(basename $0): unable to start VM ($PHARO_VM)"
+	exit 1
+fi
+
+# remove cache link
 rm -f "$OUTPUT_CACHE"
 
-# done
+# success
 exit 0

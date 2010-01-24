@@ -9,13 +9,13 @@ You should get a directory structure with several empty directories, this readme
 
 1. Create an initial build image that will be used as the source for all builds. Get a distribution image from <http://www.pharo-project.org/pharo-download> and unzip the image in the "images" directory.
 
-2. Review or create your own build scripts in the directory "scripts". There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff. Currently this is mostly done using Gofer, but later something more sophisticated like Mason could be used. The sample builds scripts are just a starting point for creating your own build scripts for your own projects.
+2. Review or create your own build scripts in the directory "scripts". Use whatever loader you want: Gofer, Metacello, Mason, ... Just make sure that it is present in the source image. There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff. Currently this is mostly done using Gofer, but later something more sophisticated like Mason could be used. The sample builds scripts are just a starting point for creating your own build scripts for your own projects.
 
-3. The "cache" directory contains the shared package cache of all builds. It is initially empty.
+3. The "cache" directory contains the package cache of the builds. It is initially empty.
 
-4. The "builds" directory is only used when the build script is called from the command-line. Normally it is empty.
+4. The "builds" directory is only used when the build script is called from the command-line. Normally it is and remains empty.
 
-The generic build script build.sh works in the described directory structure. Preferably it is called from Hudson, but you can also use it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
+The generic build script build.sh works in the described directory structure. Preferably it is called from Hudson, but you can also call it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
 
 PART B - Integrate with Hudson
 ==============================
@@ -60,12 +60,13 @@ Run the build job
 - after saving the new job, you should already be in the new job's control screen. If not, you can navigate there from the dashboard.
 - start a build by clicking on the "Build Now" link
 
-HINTS
-=====
+DEBUGGING
+=========
 
-1. Click on "Workspace" to see the "Wipe Out Workspace" link. If a PharoDebug.log file is generated, it will be more easy to spot, if the workspace was originally cleaned out.
+1. Test your build scripts in a headful image beforehand.
 
-2. Test your build script in a headful image beforehand. Any flaw will cause the build to stall, and you'll need to abort it (using the Hudson interface), then look at the PharoDebug.log to figure out what went wrong.
+2. In case of problems study the "Console Output" of the failed build.
 
-3. Hudson timeout plugin - I've not tried this yet, but if you have a build script error, your build does not abort on its own (or, I've not waited long enough).
+3. In most cases builds fail because of an error within the image. Click on "Workspace" and check "PharoDebug.log".
 
+4. If the build stalls abort it and study the "Console Output" and the "PharoDebug.log" to figure out what went wrong.

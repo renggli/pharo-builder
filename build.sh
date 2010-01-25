@@ -113,10 +113,12 @@ exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 
 # wait for the process to terminate, or a debug log
 if [ $! ] ; then
-	while kill -0 $! 2> /dev/null ; do 
+	while kill -0 $! 2> /dev/null ; do
 		if [ -f "$OUTPUT_DEBUG" ] ; then
+			sleep 5
 			kill -s SIGKILL $! 2> /dev/null
-			echo "$(basename $0): build failed ($OUTPUT_DEBUG)"
+			echo "$(basename $0): error loading code ($PHARO_VM)"
+			cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
 			exit 1
 		fi
 		sleep 1

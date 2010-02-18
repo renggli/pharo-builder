@@ -70,3 +70,12 @@ DEBUGGING
 3. In most cases builds fail because of an error within the image. Click on "Workspace" and check "PharoDebug.log".
 
 4. If the build stalls abort it and study the "Console Output" and the "PharoDebug.log" to figure out what went wrong.
+
+HUDSON PLUGINS
+==============
+
+- The "Build timeout" plugin is useful to automatically kill and fail builds that seem to hang.
+
+- The "URL Change Trigger" plugin is useful to automatically trigger builds when the Monticello repository changes.
+
+- The "Green Balls" plugin makes the Hudson GUI look slightly better.

@@ -9,3 +9,6 @@
 			{'SqueakSource Password'. ''}.
 			{'Run tests'. false}.
 		}.
+!
+"Update to the latest code"
+WADevelopment loadPackages: WADevelopment allPackages

@@ -1,8 +1,6 @@
 "Pier 2"
 Gofer new
 	renggli: 'pier2';
-	package: 'Pier-Core';
-	package: 'Pier-Pharo-Core';
 	package: 'Pier-Model';
 	package: 'Pier-Pharo-Model';
 	package: 'Pier-Tests-Model';

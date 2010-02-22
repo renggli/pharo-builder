@@ -1,14 +1,87 @@
-"Seaside"
-[ Gofer new
-	squeaksource: 'Seaside30';
-	package: 'LoadOrderTests';
-	load ]
-		valueSupplyingAnswers: {
-			{'Load Seaside'. true}.
-			{'SqueakSource User Name'. ''}.
-			{'SqueakSource Password'. ''}.
-			{'Run tests'. false}.
-		}.
+"Kommanche"
+Gofer new
+	squeaksource: 'KomHttpServer';
+	package: 'DynamicBindings';
+	package: 'KomServices';
+	package: 'KomHttpServer';
+	load.
 !
-"Update to the latest code"
-WADevelopment loadPackages: WADevelopment allPackages
+"Seaside 3"
+Gofer new
+	squeaksource: 'Seaside30';
+	squeaksource: 'Seaside30LGPL';
+	package: 'Comet-Core';
+	package: 'Comet-Examples';
+	package: 'Comet-Pharo-Core';
+	package: 'Comet-Tests-Core';
+	package: 'Grease-Core';
+	package: 'Grease-Pharo-Core';
+	package: 'Grease-Slime';
+	package: 'Grease-Tests-Core';
+	package: 'Grease-Tests-Pharo-Core';
+	package: 'Grease-Tests-Slime';
+	package: 'JQuery-Core';
+	package: 'JQuery-Tests-Core';
+	package: 'JQuery-Tests-UI';
+	package: 'JQuery-UI';
+	package: 'Javascript-Core';
+	package: 'Javascript-Pharo-Core';
+	package: 'Javascript-Tests-Core';
+	package: 'Prototype-Core';
+	package: 'Prototype-Tests-Core';
+	package: 'RSS-Core';
+	package: 'RSS-Examples';
+	package: 'RSS-Tests-Core';
+	package: 'Scriptaculous-Components';
+	package: 'Scriptaculous-Core';
+	package: 'Scriptaculous-Tests-Components';
+	package: 'Scriptaculous-Tests-Core';
+	package: 'Seaside-Adaptors-Comanche';
+	package: 'Seaside-Canvas';
+	package: 'Seaside-Component';
+	package: 'Seaside-Core';
+	package: 'Seaside-Development';
+	package: 'Seaside-Email';
+	package: 'Seaside-Environment';
+	package: 'Seaside-Examples';
+	package: 'Seaside-Flow';
+	package: 'Seaside-HTML5';
+	package: 'Seaside-InternetExplorer';
+	package: 'Seaside-Pharo-Canvas';
+	package: 'Seaside-Pharo-Continuation';
+	package: 'Seaside-Pharo-Core';
+	package: 'Seaside-Pharo-Development';
+	package: 'Seaside-Pharo-Email';
+	package: 'Seaside-Pharo-Environment';
+	package: 'Seaside-Pharo-Flow';
+	package: 'Seaside-Pharo-Tools-OmniBrowser';
+	package: 'Seaside-Pharo-Tools-Web';
+	package: 'Seaside-RenderLoop';
+	package: 'Seaside-Session';
+	package: 'Seaside-Slime';
+	package: 'Seaside-Tests-Adaptors-Comanche';
+	package: 'Seaside-Tests-Canvas';
+	package: 'Seaside-Tests-Component';
+	package: 'Seaside-Tests-Core';
+	package: 'Seaside-Tests-Development';
+	package: 'Seaside-Tests-Email';
+	package: 'Seaside-Tests-Environment';
+	package: 'Seaside-Tests-Examples';
+	package: 'Seaside-Tests-Flow';
+	package: 'Seaside-Tests-Functional';
+	package: 'Seaside-Tests-HTML5';
+	package: 'Seaside-Tests-InternetExplorer';
+	package: 'Seaside-Tests-Pharo-Continuation';
+	package: 'Seaside-Tests-Pharo-Core';
+	package: 'Seaside-Tests-Pharo-Development';
+	package: 'Seaside-Tests-Pharo-Functional';
+	package: 'Seaside-Tests-RenderLoop';
+	package: 'Seaside-Tests-Session';
+	package: 'Seaside-Tests-Slime';
+	package: 'Seaside-Tests-Tools-Web';
+	package: 'Seaside-Tests-UTF8';
+	package: 'Seaside-Tools-Core';
+	package: 'Seaside-Tools-OmniBrowser';
+	package: 'Seaside-Tools-Web';
+	package: 'Seaside-Widgets';
+	load.

@@ -9,12 +9,12 @@ Gofer new
 	package: 'Pier-Security';
 	package: 'Pier-Pharo-Persistency';
 	package: 'Pier-Tests-Security';
+    package: 'Pier-Blog';
+    package: 'Pier-Book';
 	load.
 Gofer new
-    renggli: 'pier2';
+    renggli: 'pier2addons';
 	package: 'Pier-Setup';
-	package: 'Pier-Blog';
-	package: 'Pier-Book';
 	package: 'Pier-Documents';
 	package: 'Pier-EditorEnh';
 	package: 'Pier-LinkChecker';

@@ -14,7 +14,8 @@ Gofer new
 	package: 'OB-Tests-Core';
 	package: 'OB-Tests-Morphic';
 	package: 'OB-Tests-Standard';
+	package: 'OB-Tests-Refactory';
 	load.
 !
 "Run the Refactoring and OmniBrowser Tests"
-HDTestReport runPackages: #('AST-Tests-Core' 'Refactoring-Tests-Core' 'Refactoring-Tests-Spelling' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard').
+HDTestReport runPackages: #('AST-Tests-Core' 'Refactoring-Tests-Core' 'Refactoring-Tests-Spelling' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard' 'OB-Tests-Refactory').

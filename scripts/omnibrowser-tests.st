@@ -18,4 +18,4 @@ Gofer new
 	load.
 !
 "Run the Refactoring and OmniBrowser Tests"
-HDTestReport runPackages: #('AST-Tests-Core' 'Refactoring-Tests-Core' 'Refactoring-Tests-Spelling' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard' 'OB-Tests-Refactory').
+HDTestReport runPackages: #('AST-Tests-Core' 'Refactoring-Tests-Core' 'Refactoring-Tests-Spelling' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard' 'OB-Tests-Refactory' 'RoelTyper' 'ECompletion').

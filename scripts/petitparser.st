@@ -4,4 +4,5 @@ Gofer new
 	package: 'PetitParser';
 	package: 'PetitSmalltalk';
 	package: 'PetitAnalyzer';
+	package: 'PetitXml';
 	load.

@@ -11,7 +11,7 @@ Preferences setDefaultFonts: #(
         (setWindowTitleFontTo: 'BitmapDejaVuBold' 12)).
 !
 "Cleanup Environment"
-UIThemeStandardSqueak beCurrent.
+UIThemeWatery2 beCurrent.
 World submorphs do: [ :each |
         (each isKindOf: SketchMorph)
                 ifTrue: [ each delete ] ].

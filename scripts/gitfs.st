@@ -5,3 +5,5 @@ Gofer new
 	package: 'Git';
 	package: 'GitFS';
 	load.
+!
+Preferences enable: #mercuryPanel.

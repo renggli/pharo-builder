@@ -1,3 +1,3 @@
 "Run the GitFS Tests"
-HDTestReport runPackages: #('GitFS').
+HDTestReport runPackages: #('Git' 'GitFS').
 

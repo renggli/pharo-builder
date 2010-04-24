@@ -3,4 +3,4 @@ MCCacheRepository instVarNamed: 'default' put: nil.
 !
 
 "Resize window"
-DisplayScreen depth: DisplayScreen actualScreenDepth width: 700 height: 600 fullscreen: false.
+DisplayScreen depth: DisplayScreen actualScreenDepth width: 1024 height: 720 fullscreen: false.

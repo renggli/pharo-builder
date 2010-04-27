@@ -1,2 +1,2 @@
 "Run the Helvetia Tests"
-HDTestReport runPackages: #('QuasiQuote' 'Helvetia-Core' 'Cutie-Helvetia').
+HDTestReport runPackages: #('AST-Compiler' 'QuasiQuote' 'Helvetia-Core' 'Cutie-Helvetia').

@@ -9,11 +9,6 @@ Gofer new
 Preferences enable: #mercuryPanel.
 !
 
-
-"Resize window"
-DisplayScreen depth: DisplayScreen actualScreenDepth width: 1920 height: 1032 fullscreen: false.
-!
-
 "Create initial environment"
 TestRunner open.
 

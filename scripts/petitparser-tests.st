@@ -1,3 +1,3 @@
 "Run the PetitParser Tests"
-HDTestReport runPackages: #('PetitParser' 'PetitSmalltalk' 'PetitAnalyzer' 'PetitXml').
+HDTestReport runPackages: #('PetitParser' 'PetitAnalyzer' 'PetitBeta' 'PrettyPetit' 'PetitSmalltalk' 'PetitXml').
 

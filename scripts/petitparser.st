@@ -2,7 +2,15 @@
 Gofer new
 	renggli: 'petit';
 	package: 'PetitParser';
-	package: 'PetitSmalltalk';
 	package: 'PetitAnalyzer';
+	package: 'PetitBeta';
+	package: 'PrettyPetit';
+	load.
+!
+"PetitParser Examples
+Gofer new
+    renggli: 'petit';
+	package: 'PetitSmalltalk';
 	package: 'PetitXml';
 	load.
+

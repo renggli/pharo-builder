@@ -14,7 +14,7 @@ Preferences setDefaultFonts: #(
 UIThemeWatery2 beCurrent.
 World color: Color white.
 World submorphs do: [ :each |
-        (each isKindOf: SketchMorph)
+        (#(SketchMorph ImageMorph) includes: each class name)
                 ifTrue: [ each delete ] ].
 !
 "Set decent Preferences"

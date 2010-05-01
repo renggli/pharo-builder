@@ -18,4 +18,4 @@
 # little endian hex: 0804 8007
 #
 ############
-echo -e \\x08\\x04\\x80\\x07 | dd of="$1" obs=1 oseek=24 conv=block,notrunc cbs=4
+echo -e \\x08\\x04\\x80\\x07 | dd of="$1" obs=1 seek=24 conv=block,notrunc cbs=4

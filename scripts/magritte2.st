@@ -6,4 +6,6 @@ Gofer new
 	package: 'Magritte-Seaside';
 	package: 'Magritte-Pharo-Seaside';
 	package: 'Magritte-Morph';
+    package: 'Magritte-Tests-Model';
+    package: 'Magritte-Tests-Pharo-Model';
 	load.

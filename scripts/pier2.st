@@ -3,10 +3,13 @@ Gofer new
 	renggli: 'pier2';
 	package: 'Pier-Model';
 	package: 'Pier-Pharo-Model';
+	package: 'Pier-Tests-Model';
 	package: 'Pier-Seaside';
 	package: 'Pier-Pharo-Seaside';
 	package: 'Pier-Security';
+	package: 'Pier-Tests-Security';
 	package: 'Pier-Pharo-Persistency';
+	package: 'Pier-Tests-Pharo-Persistency';
 	package: 'Pier-Blog';
 	package: 'Pier-Book';
 	load.

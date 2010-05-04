@@ -18,4 +18,3 @@ stream binary; reset.
 morph := (PNGReadWriter on: stream) nextImage asMorph.
 morph left: 10; top: 10; lock: true; sticky: true.
 World addMorph: morph.
-

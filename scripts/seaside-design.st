@@ -10,6 +10,9 @@ World fillStyle: gradient.
 !
 "Logo"
 | stream morph |
+World submorphs do: [ :each | 
+	each class = ImageMorph
+		ifTrue: [ each delete ] ].
 stream := HTTPSocket httpGet: 'http://www.seaside.st/files/3d/7g2rn53ickp4mxkfjn32kwgx8xpgmm/seaside-s.png'.
 stream binary; reset.
 morph := (PNGReadWriter on: stream) nextImage asMorph.

@@ -22,6 +22,7 @@ Gofer new
 Gofer new
 	renggli: 'unsorted';
 	package: 'Shout';
+	package: 'ShoutWorkspace';
 	package: 'RoelTyper';
 	package: 'ECompletion';
 	package: 'ECompletionOmniBrowser';

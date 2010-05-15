@@ -16,6 +16,7 @@ BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
 
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
 SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
+SOURCES_PATH="$(readlink -f $(dirname $0))/sources"
 BUILD_CACHE="$(readlink -f $(dirname $0))/cache"
 
 # build configuration
@@ -96,9 +97,10 @@ mkdir -p "$OUTPUT_PATH"
 mkdir -p "$BUILD_CACHE/$OUTPUT_NAME"
 ln -s "$BUILD_CACHE/$OUTPUT_NAME" "$OUTPUT_CACHE"
 
-# prepare image file
+# prepare image file and sources
 cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
 cp "$INPUT_CHANGES" "$OUTPUT_CHANGES"
+find "$SOURCES_PATH" -name "*.sources" -exec ln "{}" "$OUTPUT_PATH/" \;
 
 # prepare script file
 SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")
@@ -130,6 +132,7 @@ fi
 
 # remove cache link
 rm -f "$OUTPUT_CACHE"
+rm -f "$OUTPUT_PATH/*.sources"
 
 # success
 exit 0

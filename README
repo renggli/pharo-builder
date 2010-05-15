@@ -15,6 +15,8 @@ You should get a directory structure with several empty directories, this readme
 
 4. The "builds" directory is only used when the build script is called from the command-line. Normally it is and remains empty.
 
+5. The "sources" directory contains the .sources files that your images might need. Available sources files are linked to the build directory if present.
+
 The generic build script build.sh works in the described directory structure. Preferably it is called from Hudson, but you can also call it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
 
 PART B - Integrate with Hudson
@@ -49,10 +51,13 @@ Configure the new job
   /var/bin/builder/build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
 
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
-- enter "**/*.xml" into the text input labelled "Test report XMLs" that appears.
+- enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
+
+- in the "Post-build Actions" section, enable "Report Violations" (requires the Violations plugin to be installed)
+- enter "**/*-Lint.xml" into the text input labelled "pmd XML filename pattern"
 
 - in the "Post-build Actions" section, enable "Archive the artifacts"
-- enter the "Files to archive" as "**/*.image, **/*.changes", and the "Files to Exclude" as "**/*-tests.*"
+- enter the "Files to archive" as "**/*.image and **/*.changes"
 
 - save the configuration changes.
 
@@ -74,8 +79,10 @@ DEBUGGING
 HUDSON PLUGINS
 ==============
 
-- The "Build timeout" plugin is useful to automatically kill and fail builds that seem to hang.
+- The "Build timeout" plugin is useful to automatically kill and fail builds that hang.
 
 - The "URL Change Trigger" plugin is useful to automatically trigger builds when the Monticello repository changes.
 
 - The "Green Balls" plugin makes the Hudson GUI look slightly better.
+
+- The "Violations" plugin reports Lint errors in Hudson.

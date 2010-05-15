@@ -79,10 +79,8 @@ DEBUGGING
 HUDSON PLUGINS
 ==============
 
-- The "Build timeout" plugin is useful to automatically kill and fail builds that hang.
-
 - The "URL Change Trigger" plugin is useful to automatically trigger builds when the Monticello repository changes.
 
 - The "Green Balls" plugin makes the Hudson GUI look slightly better.
 
-- The "Violations" plugin reports Lint errors in Hudson.
+- The "Violations" plugin reports Lint errors in Hudson (through pmd).

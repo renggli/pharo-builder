@@ -18,11 +18,8 @@ World submorphs do: [ :each |
                 ifTrue: [ each delete ] ].
 !
 "Set decent Preferences"
-Preferences enable: #scrollBarsNarrow.
 Preferences enable: #menuColorFromWorld.
-Preferences disable: #scrollBarsWithoutMenuButton.
 Preferences disable: #useNewDiffToolsForMC.
-Preferences disable: #duplicateAllControlAndAltKeys.
 Preferences disable: #fadedBackgroundWindows.
 Preferences disable: #windowAnimation.
-Preferences disable: #noWindowAnimationForClosing.
+Preferences enable: #noWindowAnimationForClosing.

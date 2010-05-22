@@ -57,11 +57,11 @@ Gofer new
 !
 "Development and Admin Tools"
 Gofer new
-    squeaksource: 'Seaside30';
-    package: 'Grease-Slime';
-    package: 'Grease-Tests-Slime';
-    package: 'Seaside-Slime';
-    package: 'Seaside-Tests-Slime';
+	squeaksource: 'Seaside30';
+	package: 'Grease-Slime';
+	package: 'Grease-Tests-Slime';
+	package: 'Seaside-Slime';
+	package: 'Seaside-Tests-Slime';
 	package: 'Seaside-Tools-OmniBrowser';
 	package: 'Seaside-Pharo-Tools-OmniBrowser';
 	load.
@@ -99,8 +99,8 @@ Gofer new
 "Other"
 Gofer new
 	squeaksource: 'Seaside30';
-    package: 'Seaside-Adaptors-Comanche';
-    package: 'Seaside-Tests-Adaptors-Comanche';
+	package: 'Seaside-Adaptors-Comanche';
+	package: 'Seaside-Tests-Adaptors-Comanche';
 	package: 'Seaside-HTML5';
 	package: 'Seaside-Tests-HTML5';
 	package: 'Seaside-InternetExplorer';

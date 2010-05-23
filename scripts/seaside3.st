@@ -1,11 +1,3 @@
-"Kommanche"
-Gofer new
-	squeaksource: 'KomHttpServer';
-	package: 'DynamicBindings';
-	package: 'KomServices';
-	package: 'KomHttpServer';
-	load.
-!
 "Basic"
 Gofer new
 	squeaksource: 'Seaside30';
@@ -80,6 +72,7 @@ Gofer new
 	package: 'Javascript-Core';
 	package: 'Javascript-Pharo-Core';
 	package: 'Javascript-Tests-Core';
+	package: 'Javascript-Tests-Pharo-Core';
 	package: 'JQuery-Core';
 	package: 'JQuery-Tests-Core';
 	package: 'JQuery-UI';
@@ -96,16 +89,15 @@ Gofer new
 	package: 'Comet-Tests-Core';
 	load.
 !
-"Other"
+"Other Packages"
 Gofer new
-	squeaksource: 'Seaside30';
-	package: 'Seaside-Adaptors-Comanche';
-	package: 'Seaside-Tests-Adaptors-Comanche';
-	package: 'Seaside-HTML5';
-	package: 'Seaside-Tests-HTML5';
-	package: 'Seaside-InternetExplorer';
-	package: 'Seaside-Tests-InternetExplorer';
-	package: 'Seaside-Email';
-	package: 'Seaside-Tests-Email';
-	package: 'Seaside-Pharo-Email';
-	load.
+    squeaksource: 'Seaside30';
+    package: 'Seaside-Welcome';
+    package: 'Seaside-HTML5';
+    package: 'Seaside-Tests-HTML5';
+    package: 'Seaside-InternetExplorer';
+    package: 'Seaside-Tests-InternetExplorer';
+    package: 'Seaside-Email';
+    package: 'Seaside-Tests-Email';
+    package: 'Seaside-Pharo-Email';
+    load.

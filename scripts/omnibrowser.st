@@ -2,6 +2,7 @@
 Gofer new
 	squeaksource: 'rb';
 	package: 'AST-Core';
+	package: 'AST-Semantic';
 	package: 'Refactoring-Core';
 	package: 'Refactoring-Spelling';
 	load.

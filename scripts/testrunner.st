@@ -1,5 +1,5 @@
 "Load Hudson Build Tools"
 Gofer new
-	renggli: 'unsorted';
+	renggli: 'hudson';
 	package: 'HudsonBuildTools';
 	load.

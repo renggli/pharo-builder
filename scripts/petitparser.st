@@ -2,6 +2,7 @@
 Gofer new
 	renggli: 'petit';
 	package: 'PetitParser';
+	package: 'PetitTests';
 	package: 'PetitAnalyzer';
 	package: 'PetitBeta';
 	package: 'PrettyPetit';

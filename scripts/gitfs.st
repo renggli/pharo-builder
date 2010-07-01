@@ -4,6 +4,7 @@ Gofer new
 	package: 'Filesystem';
 	package: 'Git';
 	package: 'GitFS';
+	package: 'GPFS';
 	load.
 !
 

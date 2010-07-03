@@ -138,9 +138,6 @@ else
 	exit 1
 fi
 
-# links successfull build
-ln -f -s "$OUTPUT_PATH" "$IMAGE_PATH"
-
 # remove cache link
 rm -f "$OUTPUT_CACHE"
 rm -f "$OUTPUT_PATH/*.sources"

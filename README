@@ -25,7 +25,8 @@ PART B - Integrate with Hudson
 Download hudson.war from <http://hudson-ci.org/>.
 
 Start the Hudson server.
-- run something like:
+- add build.sh to your path, so that can be easily called from within Hudson
+- run Hudson with something like:
     WARFILE=$HOME/apps/hudson/hudson.war
     LOGFILE=hudson.log
     nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
@@ -34,21 +35,19 @@ Start the Hudson server.
 
 Add new Hudson job
 - from Hudson dashboard, select "New Job"
-- fill in a job name, e.g. "Core"
+- fill in a job name, e.g. "Pharo"
 - choose the "Build a free-style software project" radio button
 - click on OK
 
 Configure the new job
 - you should be sent to the job configuration screen, after the previous step
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
-- in the command textarea that appears, type the build specification (adapt the paths to your installation):
+- in the command textarea that appears, type the build specification:
 
-  #!/bin/bash
+  build.sh -i PharoCore-1.0-10505rc1 -s gofer -s settings -o core
 
-  /var/bin/builder/build.sh -i PharoCore-1.0-10505rc1 -s gofer -s settings -o core
-
-  /var/bin/builder/build.sh -i core -s omnibrowser -o omnibrowser
-  /var/bin/builder/build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
+  build.sh -i core -s omnibrowser -o omnibrowser
+  build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
 
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
@@ -74,7 +73,7 @@ DEBUGGING
 
 3. In most cases builds fail because of an error within the image. Click on "Workspace" and check "PharoDebug.log".
 
-4. If the build stalls abort it and study the "Console Output" and the "PharoDebug.log" to figure out what went wrong.
+4. If the build stalls abort it and study the "Console Output" to figure out what went wrong.
 
 HUDSON PLUGINS
 ==============

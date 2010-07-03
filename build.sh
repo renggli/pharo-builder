@@ -43,12 +43,13 @@ while getopts ":i:o:s:?" OPT ; do
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG.image"
-			else
-				INPUT_IMAGE=`find -L "$BUILD_PATH" -name "$OPTARG.image" | grep "/lastSuccessful/" | head -n 1`
-				if [ ! -f "$INPUT_IMAGE" ] ; then
-					echo "$(basename $0): input image not found ($OPTARG)"
-					exit 1
-				fi
+			elif [ -n "$WORKSPACE" ] ; then
+				INPUT_IMAGE=`find -L "$WORKSPACE/../.." -name "$OPTARG.image" | grep "/lastSuccessful/" | head -n 1`
+			fi
+
+			if [ ! -f "$INPUT_IMAGE" ] ; then
+				echo "$(basename $0): input image not found ($OPTARG)"
+				exit 1
 			fi
 
 			INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"

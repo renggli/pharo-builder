@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # build.sh -- Builds Pharo images using a series of Smalltalk
-#   scripts. Best to used together with Hudson.
+#   scripts. Best to be used together with Hudson.
 #
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
@@ -37,11 +37,18 @@ while getopts ":i:o:s:?" OPT ; do
 		# input
     	i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
+			elif [ -f "$BUILD_PATH/$OPTARG.image" ] ; then
+                INPUT_IMAGE="$BUILD_PATH/$OPTARG.image"
+			elif [ -f "$IMAGES_PATH/$OPTARG/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$IMAGES_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG.image"
 			else
-				echo "$(basename $0): input image not found ($OPTARG)"
-				exit 1
+				INPUT_IMAGE=`find -L "$BUILD_PATH" -name "$OPTARG.image" | grep "/lastSuccessful/" | head -n 1`
+				if [ ! -f "$INPUT_IMAGE" ] ; then
+					echo "$(basename $0): input image not found ($OPTARG)"
+					exit 1
+				fi
 			fi
 
 			INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"
@@ -129,6 +136,9 @@ else
 	echo "$(basename $0): unable to start VM ($PHARO_VM)"
 	exit 1
 fi
+
+# links successfull build
+ln -f -s "$OUTPUT_PATH" "$IMAGE_PATH"
 
 # remove cache link
 rm -f "$OUTPUT_CACHE"

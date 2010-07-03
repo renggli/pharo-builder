@@ -1,3 +1,3 @@
 "Run the GitFS Tests"
-HDTestReport runPackages: #('Git' 'GitFS').
-HDLintReport runPackages: #('Git' 'GitFS').
+HDTestReport runPackages: #('Git' 'GitFS' 'GPFS').
+HDLintReport runPackages: #('Git' 'GitFS' 'GPFS').

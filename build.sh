@@ -38,7 +38,7 @@ while getopts ":i:o:s:?" OPT ; do
     	i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$BUILD_PATH/$OPTARG.image" ] ; then
-                INPUT_IMAGE="$BUILD_PATH/$OPTARG.image"
+				INPUT_IMAGE="$BUILD_PATH/$OPTARG.image"
 			elif [ -f "$IMAGES_PATH/$OPTARG/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$IMAGES_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then

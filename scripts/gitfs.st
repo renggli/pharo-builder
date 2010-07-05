@@ -2,9 +2,13 @@
 Gofer new
 	squeaksource: 'GitFS';
 	package: 'Filesystem';
-	package: 'Git';
 	package: 'GitFS';
 	package: 'GPFS';
+	load;
+
+Gofer new
+	squeaksource: 'Phit';
+	package: 'Phit';
 	load.
 !
 

@@ -1,5 +1,5 @@
 "Run the GitFS Tests"
-HDCoverageReport runPackages: #('Phit' 'GitFS' 'GPFS').
-HDLintReport runPackages: #('Phit' 'GitFS' 'GPFS').
+HDCoverageReport runPackages: #('Phit' 'GitFS').
+HDLintReport runPackages: #('Phit' 'GitFS').
 	
 

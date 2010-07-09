@@ -3,7 +3,6 @@ Gofer new
 	squeaksource: 'GitFS';
 	package: 'Filesystem';
 	package: 'GitFS';
-	package: 'GPFS';
 	load.
 !
 Gofer new

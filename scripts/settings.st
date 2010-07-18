@@ -16,6 +16,7 @@ World color: Color white.
 World submorphs do: [ :each |
         (#(SketchMorph ImageMorph) includes: each class name)
                 ifTrue: [ each delete ] ].
+WorldState showUpdateOptionInWorldMenu: false.
 !
 "Set decent Preferences"
 Preferences enable: #menuColorFromWorld.

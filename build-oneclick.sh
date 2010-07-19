@@ -24,7 +24,7 @@ function display_help() {
 # parse options
 while getopts ":i:o:t:v:?" OPT ; do
 	case "$OPT" in
-		
+
 		# input
 		i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
@@ -37,28 +37,28 @@ while getopts ":i:o:t:v:?" OPT ; do
 			elif [ -n "$WORKSPACE" ] ; then
 				INPUT_IMAGE=`find -L "$WORKSPACE/../.." -name "$OPTARG.image" | grep "/lastSuccessful/" | head -n 1`
 			fi
-			
+
 			if [ ! -f "$INPUT_IMAGE" ] ; then
 				echo "$(basename $0): input image not found ($OPTARG)"
 				exit 1
 			fi
-			
+
 			INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"
 			if [ ! -f "$INPUT_CHANGES" ] ; then
 				echo "$(basename $0): input changes not found ($INPUT_CHANGES)"
 				exit 1
 			fi
 		;;
-		
+
 		# output
 		o)	OUTPUT_NAME="$OPTARG"
 			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
 		;;
-		
+
 		# settings
 		t) TITLE="$OPTARG" ;;
 		v) VERSION="$OPTARG" ;;
-		
+
 		# show help
 		\?)	display_help
 			exit 1
@@ -73,7 +73,7 @@ if [ -z "$INPUT_IMAGE" ] ; then
 	exit 1
 fi
 
-if [ -z "$OUTPUT_IMAGE" ] ; then
+if [ -z "$OUTPUT_NAME" ] ; then
 	echo "$(basename $0): no output product name given"
 	exit 1
 fi

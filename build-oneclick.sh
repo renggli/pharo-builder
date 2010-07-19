@@ -92,10 +92,9 @@ fi
 if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi
-mkdir -p "$OUTPUT_PATH"
 
 # copy over the template
-cp -R "$TEMPLATE_PATH/*" "$OUTPUT_PATH/"
+cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
 # expand all the templates
 for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do

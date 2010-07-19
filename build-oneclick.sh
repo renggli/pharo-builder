@@ -22,7 +22,7 @@ function display_help() {
 }
 
 # parse options
-while getopts ":i:o:s:?" OPT ; do
+while getopts ":i:o:t:v:?" OPT ; do
 	case "$OPT" in
 		
 		# input
@@ -50,14 +50,14 @@ while getopts ":i:o:s:?" OPT ; do
 			fi
 		;;
 		
-		# settings
-		t) TITLE="$OPTARG" ;;
-		v) VERSION="$OPTARG" ;;
-		
 		# output
 		o)	OUTPUT_NAME="$OPTARG"
 			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
 		;;
+		
+		# settings
+		t) TITLE="$OPTARG" ;;
+		v) VERSION="$OPTARG" ;;
 		
 		# show help
 		\?)	display_help

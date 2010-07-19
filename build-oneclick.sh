@@ -15,9 +15,10 @@ TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
 function display_help() {
 	echo "$(basename $0) -i input -o output -t title -v version -c icon"
 	echo " -i input product name, image from images-directory, or successful hudson build"
-	echo " -o output product name"
-	echo " -t the title of the application"
-	echo " -v the version of the application"
+	echo " -o output product name (e.g. Pharo-1.0)"
+	echo " -t the title of the application (e.g. Pharo)"
+	echo " -v the version of the application (e.g. 1.0)"
+	echo " -c the icon of the application (e.g. Pharo)"
 }
 
 # parse options
@@ -103,7 +104,7 @@ fi
 cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
 # expand all the templates
-for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
+find "$OUTPUT_PATH" -name "*.template" | while read TEMPLATE_FILE ; do
 	sed \
 		-e "s/%{NAME}/${OUTPUT_NAME}/g" \
 		-e "s/%{TITLE}/${TITLE}/g" \
@@ -115,7 +116,7 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
 done
 
 # expand all the filenames
-for TEMPLATE_FILE in `find "$OUTPUT_PATH"` ; do
+find "$OUTPUT_PATH" | while read TEMPLATE_FILE ; do
 	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
         -e "s/%{NAME}/${OUTPUT_NAME}/g" \
         -e "s/%{TITLE}/${TITLE}/g" \

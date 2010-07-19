@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# build-oneclick.sh -- Builds One-Click Images
+# build-oneclick.sh -- Builds Pharo based One-Click images
 #
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
@@ -10,26 +10,55 @@
 BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
 
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
-SOURCES_PATH="$(readlink -f $(dirname $0))/sources"
 TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
 
 # help function
 function display_help() {
-	echo "$(basename $0) -t title -v version -i input -o output"
+	echo "$(basename $0) -i input -o output -t title -v version"
+	echo " -i input product name, image from images-directory, or successful hudson build"
+	echo " -o output product name"
 	echo " -t the title of the application"
 	echo " -v the version of the application"
-	echo " -i the input image"
-	echo " -o the output name"
 }
 
 # parse options
 while getopts ":i:o:s:?" OPT ; do
 	case "$OPT" in
-
+		
+		# input
+		i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
+			elif [ -f "$BUILD_PATH/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$BUILD_PATH/$OPTARG.image"
+			elif [ -f "$IMAGES_PATH/$OPTARG/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$IMAGES_PATH/$OPTARG/$OPTARG.image"
+			elif [ -f "$IMAGES_PATH/$OPTARG.image" ] ; then
+				INPUT_IMAGE="$IMAGES_PATH/$OPTARG.image"
+			elif [ -n "$WORKSPACE" ] ; then
+				INPUT_IMAGE=`find -L "$WORKSPACE/../.." -name "$OPTARG.image" | grep "/lastSuccessful/" | head -n 1`
+			fi
+			
+			if [ ! -f "$INPUT_IMAGE" ] ; then
+				echo "$(basename $0): input image not found ($OPTARG)"
+				exit 1
+			fi
+			
+			INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"
+			if [ ! -f "$INPUT_CHANGES" ] ; then
+				echo "$(basename $0): input changes not found ($INPUT_CHANGES)"
+				exit 1
+			fi
+		;;
+		
 		# settings
 		t) TITLE="$OPTARG" ;;
 		v) VERSION="$OPTARG" ;;
-
+		
+		# output
+		o)	OUTPUT_NAME="$OPTARG"
+			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
+		;;
+		
 		# show help
 		\?)	display_help
 			exit 1
@@ -38,36 +67,28 @@ while getopts ":i:o:s:?" OPT ; do
 	esac
 done
 
-# input image and changes
-if [ -f "$BUILD_PATH/$1/$1.image" ] ; then
-	INPUT_IMAGE="$BUILD_PATH/$1/$1.image"
-elif [ -f "$BUILD_PATH/$1.image" ] ; then
-	INPUT_IMAGE="$BUILD_PATH/$1.image"
-elif [ -f "$IMAGES_PATH/$1/$1.image" ] ; then
-	INPUT_IMAGE="$IMAGES_PATH/$1/$1.image"
-elif [ -f "$IMAGES_PATH/$1.image" ] ; then
-	INPUT_IMAGE="$IMAGES_PATH/$1.image"
-elif [ -n "$WORKSPACE" ] ; then
-    INPUT_IMAGE=`find -L "$WORKSPACE/../.." -name "$1.image" | grep "/lastSuccessful/" | head -n 1`
+# check required parameters
+if [ -z "$INPUT_IMAGE" ] ; then
+	echo "$(basename $0): no input product name given"
+	exit 1
 fi
 
-if [ ! -f "$INPUT_IMAGE" ] ; then
-	echo "$(basename $0): input image not found ($1)"
-    exit 1
+if [ -z "$OUTPUT_IMAGE" ] ; then
+	echo "$(basename $0): no output product name given"
+	exit 1
 fi
 
-INPUT_CHANGES="${INPUT_IMAGE%.*}.changes"
-if [ ! -f "$INPUT_CHANGES" ] ; then
-	echo "$(basename $0): input changes not found ($INPUT_CHANGES)"
-    exit 1
+if [ -z "$TITLE" ] ; then
+	echo "$(basename $0): title is missing"
+	exit 1
 fi
 
-shift
+if [ -z "$VERSION" ] ; then
+	echo "$(basename $0): version is missing"
+	exit 1
+fi
 
-# output path and application name
-OUTPUT_NAME="$1"
-OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
-
+# prepare output path
 if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi

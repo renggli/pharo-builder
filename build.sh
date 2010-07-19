@@ -35,7 +35,7 @@ while getopts ":i:o:s:?" OPT ; do
 	case "$OPT" in
 
 		# input
-    	i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
+		i)	if [ -f "$BUILD_PATH/$OPTARG/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$BUILD_PATH/$OPTARG/$OPTARG.image"
 			elif [ -f "$BUILD_PATH/$OPTARG.image" ] ; then
 				INPUT_IMAGE="$BUILD_PATH/$OPTARG.image"

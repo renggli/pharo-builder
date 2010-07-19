@@ -98,19 +98,20 @@ cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
 # expand all the templates
 for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
-	while read LINE ; do
-    	while [[ "$LINE" =~ '(\$\{[a-zA-Z_][a-zA-Z_0-9]*\})' ]] ; do
-        	LHS="${BASH_REMATCH[1]}"
-        	RHS="$(eval echo "\"$LHS\"")"
-        	LINE="${LINE//$LHS/$RHS}"
-    	done
-    	echo "$LINE" >> "${TEMPLATE_FILE%.*}"
-	done < cat "$TEMPLATE_FILE"
-	rm "$TEMPLATE_FILE"
+	rm -f "${TEMPLATE_FILE%.*}"
+	cat "$TEMPLATE_FILE" | while read LINE ; do
+		while [[ "$LINE" =~ '(\$\{[a-zA-Z_][a-zA-Z_0-9]*\})' ]] ; do
+			LHS="${BASH_REMATCH[1]}"
+			RHS="$(eval echo "\"$LHS\"")"
+			LINE="${LINE//$LHS/$RHS}"
+		done
+		echo "$LINE" >> "${TEMPLATE_FILE%.*}"
+	done
+	rm -f "$TEMPLATE_FILE"
 done
 
 # expand all the filenames
-for TEMPLATE_FILE in  `find "$OUTPUT_PATH"` ; do
+for TEMPLATE_FILE in `find "$OUTPUT_PATH"` ; do
 	if [[ "$TEMPLATE_FILE" =~ '(\$\{[a-zA-Z_][a-zA-Z_0-9]*\})' ]] ; do
 		LHS="${BASH_REMATCH[1]}"
 		RHS="$(eval echo "\"$LHS\"")"

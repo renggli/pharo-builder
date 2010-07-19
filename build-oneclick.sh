@@ -53,6 +53,7 @@ while getopts ":i:o:t:v:?" OPT ; do
 		# output
 		o)	OUTPUT_NAME="$OPTARG"
 			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
+			OUTPUT_ARCH="$BUILD_PATH/$OUTPUT_NAME.zip"
 		;;
 
 		# settings
@@ -96,26 +97,27 @@ fi
 # copy over the template
 cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
+# prepare the expansion
+EXPANSION="sed -e 's/%{NAME}/${OUTPUT_NAME}/g' -e 's/%{TITLE}/${TITLE}/g' -e 's/%{VERSION}/${VERSION}/g'"
+
 # expand all the templates
 for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
-	rm -f "${TEMPLATE_FILE%.*}"
-	cat "$TEMPLATE_FILE" | while read LINE ; do
-		while [[ "$LINE" =~ '(\$\{[a-zA-Z_][a-zA-Z_0-9]*\})' ]] ; do
-			LHS="${BASH_REMATCH[1]}"
-			RHS="$(eval echo "\"$LHS\"")"
-			LINE="${LINE//$LHS/$RHS}"
-		done
-		echo "$LINE" >> "${TEMPLATE_FILE%.*}"
-	done
-	rm -f "$TEMPLATE_FILE"
+	sed \
+		-e "s/%{NAME}/${OUTPUT_NAME}/g" \
+		-e "s/%{TITLE}/${TITLE}/g" \
+		-e "s/%{VERSION}/${VERSION}/g" \
+		"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
+	rm -f "${TEMPLATE_FILE}"
 done
 
 # expand all the filenames
 for TEMPLATE_FILE in `find "$OUTPUT_PATH"` ; do
-	if [[ "$TEMPLATE_FILE" =~ '(\$\{[a-zA-Z_][a-zA-Z_0-9]*\})' ]] ; do
-		LHS="${BASH_REMATCH[1]}"
-		RHS="$(eval echo "\"$LHS\"")"
-		mv "$TEMPLATE_FILE" "${TEMPLATE_FILE//$LHS/$RHS}"
+	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
+        -e "s/%{NAME}/${OUTPUT_NAME}/g" \
+        -e "s/%{TITLE}/${TITLE}/g" \
+        -e "s/%{VERSION}/${VERSION}/g"`
+	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
+		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
 	fi
 done
 
@@ -124,7 +126,11 @@ cp "$INPUT_IMAGE" "$OUTPUT_PATH/$OUTPUT_NAME.image"
 cp "$INPUT_CHANGES" "$OUTPUT_PATH/$OUTPUT_NAME.changes"
 
 # zip up the application
-zip -r9 "$OUTPUT_PATH.zip" "$OUTPUT_PATH"
+cd "$BUILD_PATH"
+zip --quiet --recurse-paths -9 "$OUTPUT_ARCH" "$OUTPUT_NAME.app"
+cd - > /dev/null
+
+# remove the build directory
 rm -rf "$OUTPUT_PATH"
 
 # success

@@ -9,4 +9,4 @@ exec "$BASE/squeakvm" \
 	-plugins "$BASE" \
 	-encoding latin1 \
 	-vm-display-X11 \
-	"$ROOT/%{NAME}.image"
+	"$ROOT/Contents/Resources/%{NAME}.image"

@@ -123,8 +123,8 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH"` ; do
 done
 
 # copy over the images
-cp "$INPUT_IMAGE" "$OUTPUT_PATH/$OUTPUT_NAME.image"
-cp "$INPUT_CHANGES" "$OUTPUT_PATH/$OUTPUT_NAME.changes"
+cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OUTPUT_NAME.image"
+cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OUTPUT_NAME.changes"
 
 # zip up the application
 cd "$BUILD_PATH"

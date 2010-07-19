@@ -102,9 +102,6 @@ fi
 # copy over the template
 cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
-# prepare the expansion
-EXPANSION="sed -e 's/%{NAME}/${OUTPUT_NAME}/g' -e 's/%{TITLE}/${TITLE}/g' -e 's/%{VERSION}/${VERSION}/g'"
-
 # expand all the templates
 for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
 	sed \
@@ -112,7 +109,7 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
 		-e "s/%{TITLE}/${TITLE}/g" \
 		-e "s/%{VERSION}/${VERSION}/g" \
 		-e "s/%{ICON}/${ICON}/g" \
-		"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
+			"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
 	chmod --reference="${TEMPLATE_FILE}" "${TEMPLATE_FILE%.*}"
 	rm -f "${TEMPLATE_FILE}"
 done

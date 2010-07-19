@@ -352,7 +352,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Squeak VM 4.2.5b1 http://www.squeak.org</string>
 	<key>CFBundleIconFile</key>
-	<string>Squeak.icns</string>
+	<string>%{ICON}.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.squeak.%{NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -2,7 +2,6 @@
 #
 # build-oneclick.sh -- Builds Pharo based One-Click images
 #
-# Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
 #
 
@@ -14,7 +13,7 @@ TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
 
 # help function
 function display_help() {
-	echo "$(basename $0) -i input -o output -t title -v version"
+	echo "$(basename $0) -i input -o output -t title -v version -c icon"
 	echo " -i input product name, image from images-directory, or successful hudson build"
 	echo " -o output product name"
 	echo " -t the title of the application"
@@ -22,7 +21,7 @@ function display_help() {
 }
 
 # parse options
-while getopts ":i:o:t:v:?" OPT ; do
+while getopts ":i:o:t:v:c:?" OPT ; do
 	case "$OPT" in
 
 		# input
@@ -59,6 +58,7 @@ while getopts ":i:o:t:v:?" OPT ; do
 		# settings
 		t) TITLE="$OPTARG" ;;
 		v) VERSION="$OPTARG" ;;
+		c) ICON="$OPTARG" ;;
 
 		# show help
 		\?)	display_help
@@ -89,6 +89,11 @@ if [ -z "$VERSION" ] ; then
 	exit 1
 fi
 
+if [ -x "$ICON" ] ; then
+	echo "$(basename $0): icon is missing"
+	exit 1
+fi
+
 # prepare output path
 if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
@@ -106,6 +111,7 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
 		-e "s/%{NAME}/${OUTPUT_NAME}/g" \
 		-e "s/%{TITLE}/${TITLE}/g" \
 		-e "s/%{VERSION}/${VERSION}/g" \
+		-e "s/%{ICON}/${ICON}/g" \
 		"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
 	chmod --reference="${TEMPLATE_FILE}" "${TEMPLATE_FILE%.*}"
 	rm -f "${TEMPLATE_FILE}"
@@ -116,7 +122,8 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH"` ; do
 	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
         -e "s/%{NAME}/${OUTPUT_NAME}/g" \
         -e "s/%{TITLE}/${TITLE}/g" \
-        -e "s/%{VERSION}/${VERSION}/g"`
+        -e "s/%{VERSION}/${VERSION}/g" \
+		-e "s/%{ICON}/${ICON}/g"`
 	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
 		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
 	fi

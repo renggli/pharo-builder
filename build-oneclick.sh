@@ -107,6 +107,7 @@ for TEMPLATE_FILE in `find "$OUTPUT_PATH" -name "*.template"` ; do
 		-e "s/%{TITLE}/${TITLE}/g" \
 		-e "s/%{VERSION}/${VERSION}/g" \
 		"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
+	chmod --reference="${TEMPLATE_FILE}" "${TEMPLATE_FILE%.*}"
 	rm -f "${TEMPLATE_FILE}"
 done
 

@@ -13,17 +13,18 @@ TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
 
 # help function
 function display_help() {
-	echo "$(basename $0) -i input -o output [-n name] [-t title] [-v version] [-c icon]"
+	echo "$(basename $0) -i input -o output [-n name] [-t title] [-v version] [-c icon] [-w timestamp]"
 	echo " -i input product name, image from images-directory, or successful hudson build"
 	echo " -o output product name (e.g. pharo1.0)"
 	echo " -n the name of the executable (e.g. pharo)"
 	echo " -t the title of the application (e.g. Pharo)"
 	echo " -v the version of the application (e.g. 1.0)"
 	echo " -c the icon of the application (e.g. Pharo)"
+	echo " -w a timestamp string (e.g. `date +'%B %d, %Y'`)"
 }
 
 # parse options
-while getopts ":i:o:n:t:v:c:?" OPT ; do
+while getopts ":i:o:n:t:v:c:w:?" OPT ; do
 	case "$OPT" in
 
 		# input
@@ -62,6 +63,7 @@ while getopts ":i:o:n:t:v:c:?" OPT ; do
 		t) OPTION_TITLE="$OPTARG" ;;
 		v) OPTION_VERSION="$OPTARG" ;;
 		c) OPTION_ICON="$OPTARG" ;;
+		w) OPTION_WHEN="$OPTARG" ;;
 
 		# show help
 		\?)	display_help
@@ -82,6 +84,7 @@ if [ -z "$OUTPUT_NAME" ] ; then
 	exit 1
 fi
 
+# check the default paramaters
 if [ -z "$OPTION_NAME" ] ; then
 	OPTION_NAME="$OUTPUT_NAME"
 fi
@@ -98,6 +101,10 @@ if [ -z "$OPTION_ICON" ] ; then
 	OPTION_ICON="Pharo"
 fi
 
+if [ -z "$OPTION_WHEN" ] ; then
+	OPTION_WHEN=`date +"%B %d, %Y"`
+fi
+
 # prepare output path
 if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
@@ -109,22 +116,24 @@ cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 # expand all the templates
 find "$OUTPUT_PATH" -name "*.template" | while read TEMPLATE_FILE ; do
 	sed \
-		-e "s/%{NAME}/${OPTION_NAME}/g" \
-		-e "s/%{TITLE}/${OPTION_TITLE}/g" \
-		-e "s/%{VERSION}/${OPTION_VERSION}/g" \
-		-e "s/%{ICON}/${OPTION_ICON}/g" \
-			"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
-	chmod --reference="${TEMPLATE_FILE}" "${TEMPLATE_FILE%.*}"
-	rm -f "${TEMPLATE_FILE}"
+		-e "s/%{NAME}/$OPTION_NAME/g" \
+		-e "s/%{TITLE}/$OPTION_TITLE/g" \
+		-e "s/%{VERSION}/$OPTION_VERSION/g" \
+		-e "s/%{ICON}/$OPTION_ICON/g" \
+		-e "s/%{WHEN}/$OPTION_WHEN/g" \
+			"$TEMPLATE_FILE" > "${TEMPLATE_FILE%.*}"
+	chmod --reference="$TEMPLATE_FILE" "${TEMPLATE_FILE%.*}"
+	rm -f "$TEMPLATE_FILE"
 done
 
 # expand all the filenames
 find "$OUTPUT_PATH" | while read TEMPLATE_FILE ; do
 	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
-        -e "s/%{NAME}/${OPTION_NAME}/g" \
-        -e "s/%{TITLE}/${OPTION_TITLE}/g" \
-        -e "s/%{VERSION}/${OPTION_VERSION}/g" \
-        -e "s/%{ICON}/${OPTION_ICON}/g"`
+        -e "s/%{NAME}/$OPTION_NAME/g" \
+        -e "s/%{TITLE}/$OPTION_TITLE/g" \
+        -e "s/%{VERSION}/$OPTION_VERSION/g" \
+        -e "s/%{ICON}/$OPTION_ICON/g" \
+        -e "s/%{WHEN}/$OPTION_WHEN/g"`
 	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
 		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
 	fi

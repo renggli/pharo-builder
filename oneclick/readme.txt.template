@@ -1,0 +1,7 @@
+%{TITLE} %{VERSION}
+
+- Mac: launch the app file
+- Linux: launch %{NAME}.sh
+- Windows: launch %{NAME}.exe
+
+This distribution has been built %{WHEN}.

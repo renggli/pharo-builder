@@ -147,9 +147,11 @@ find "$OUTPUT_PATH" | while read FILE ; do
 done
 
 # copy over the build contents
-ls "$INPUT_PATH" | while read FILE ; do
-	if (["${FILE##*.}" == "image"] || ["${FILE##*.}" == "image"]) ; do
-		cp -Rf "$INPUT_PATH/$FILE" "$OUTPUT_PATH/Contents/Resources/"
+ls -1 "$INPUT_PATH" | while read FILE ; do
+	if [ "${FILE##*.}" != "image" ] ; then
+		if [ "${FILE##*.}" != "changes" ]) ; then
+			cp -R "$INPUT_PATH/$FILE" "$OUTPUT_PATH/Contents/Resources/"
+		fi
 	fi
 done
 cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.image"

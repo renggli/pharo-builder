@@ -13,16 +13,17 @@ TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
 
 # help function
 function display_help() {
-	echo "$(basename $0) -i input -o output -t title -v version -c icon"
+	echo "$(basename $0) -i input -o output [-n name] [-t title] [-v version] [-c icon]"
 	echo " -i input product name, image from images-directory, or successful hudson build"
-	echo " -o output product name (e.g. Pharo-1.0)"
+	echo " -o output product name (e.g. pharo1.0)"
+	echo " -n the name of the executable (e.g. pharo)"
 	echo " -t the title of the application (e.g. Pharo)"
 	echo " -v the version of the application (e.g. 1.0)"
 	echo " -c the icon of the application (e.g. Pharo)"
 }
 
 # parse options
-while getopts ":i:o:t:v:c:?" OPT ; do
+while getopts ":i:o:n:t:v:c:?" OPT ; do
 	case "$OPT" in
 
 		# input
@@ -57,9 +58,10 @@ while getopts ":i:o:t:v:c:?" OPT ; do
 		;;
 
 		# settings
-		t) TITLE="$OPTARG" ;;
-		v) VERSION="$OPTARG" ;;
-		c) ICON="$OPTARG" ;;
+		n) OPTION_NAME="$OPTARG" ;;
+		t) OPTION_TITLE="$OPTARG" ;;
+		v) OPTION_VERSION="$OPTARG" ;;
+		c) OPTION_ICON="$OPTARG" ;;
 
 		# show help
 		\?)	display_help
@@ -80,19 +82,20 @@ if [ -z "$OUTPUT_NAME" ] ; then
 	exit 1
 fi
 
-if [ -z "$TITLE" ] ; then
-	echo "$(basename $0): title is missing"
-	exit 1
+if [ -z "$OPTION_NAME" ] ; then
+	OPTION_NAME="$OUTPUT_NAME"
 fi
 
-if [ -z "$VERSION" ] ; then
-	echo "$(basename $0): version is missing"
-	exit 1
+if [ -z "$OPTION_TITLE" ] ; then
+    OPTION_TITLE="$OUTPUT_NAME"
 fi
 
-if [ -x "$ICON" ] ; then
-	echo "$(basename $0): icon is missing"
-	exit 1
+if [ -z "$OPTION_VERSION" ] ; then
+	OPTION_VERSION="1.0"
+fi
+
+if [ -z "$OPTION_ICON" ] ; then
+	OPTION_ICON="Pharo"
 fi
 
 # prepare output path
@@ -106,10 +109,10 @@ cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 # expand all the templates
 find "$OUTPUT_PATH" -name "*.template" | while read TEMPLATE_FILE ; do
 	sed \
-		-e "s/%{NAME}/${OUTPUT_NAME}/g" \
-		-e "s/%{TITLE}/${TITLE}/g" \
-		-e "s/%{VERSION}/${VERSION}/g" \
-		-e "s/%{ICON}/${ICON}/g" \
+		-e "s/%{NAME}/${OPTION_NAME}/g" \
+		-e "s/%{TITLE}/${OPTION_TITLE}/g" \
+		-e "s/%{VERSION}/${OPTION_VERSION}/g" \
+		-e "s/%{ICON}/${OPTION_ICON}/g" \
 			"${TEMPLATE_FILE}" > "${TEMPLATE_FILE%.*}"
 	chmod --reference="${TEMPLATE_FILE}" "${TEMPLATE_FILE%.*}"
 	rm -f "${TEMPLATE_FILE}"
@@ -118,18 +121,18 @@ done
 # expand all the filenames
 find "$OUTPUT_PATH" | while read TEMPLATE_FILE ; do
 	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
-        -e "s/%{NAME}/${OUTPUT_NAME}/g" \
-        -e "s/%{TITLE}/${TITLE}/g" \
-        -e "s/%{VERSION}/${VERSION}/g" \
-		-e "s/%{ICON}/${ICON}/g"`
+        -e "s/%{NAME}/${OPTION_NAME}/g" \
+        -e "s/%{TITLE}/${OPTION_TITLE}/g" \
+        -e "s/%{VERSION}/${OPTION_VERSION}/g" \
+        -e "s/%{ICON}/${OPTION_ICON}/g"`
 	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
 		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
 	fi
 done
 
 # copy over the images
-cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OUTPUT_NAME.image"
-cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OUTPUT_NAME.changes"
+cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.image"
+cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.changes"
 
 # zip up the application
 cd "$BUILD_PATH"

@@ -50,6 +50,13 @@ while getopts ":i:o:n:t:v:c:w:?" OPT ; do
 				echo "$(basename $0): input changes not found ($INPUT_CHANGES)"
 				exit 1
 			fi
+
+			INPUT_PATH=`dirname "$INPUT_IMAGE"`
+			if [ ! -d "$INPUT_PATH" ] ; then
+				echo "$(basename $0): input directory found ($INPUT_PATH)"
+				exit 1
+			fi
+
 		;;
 
 		# output
@@ -114,32 +121,37 @@ fi
 cp -R "$TEMPLATE_PATH" "$OUTPUT_PATH"
 
 # expand all the templates
-find "$OUTPUT_PATH" -name "*.template" | while read TEMPLATE_FILE ; do
+find "$OUTPUT_PATH" -name "*.template" | while read FILE ; do
 	sed \
 		-e "s/%{NAME}/$OPTION_NAME/g" \
 		-e "s/%{TITLE}/$OPTION_TITLE/g" \
 		-e "s/%{VERSION}/$OPTION_VERSION/g" \
 		-e "s/%{ICON}/$OPTION_ICON/g" \
 		-e "s/%{WHEN}/$OPTION_WHEN/g" \
-			"$TEMPLATE_FILE" > "${TEMPLATE_FILE%.*}"
-	chmod --reference="$TEMPLATE_FILE" "${TEMPLATE_FILE%.*}"
-	rm -f "$TEMPLATE_FILE"
+			"$FILE" > "${FILE%.*}"
+	chmod --reference="$FILE" "${FILE%.*}"
+	rm -f "$FILE"
 done
 
 # expand all the filenames
-find "$OUTPUT_PATH" | while read TEMPLATE_FILE ; do
-	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
+find "$OUTPUT_PATH" | while read FILE ; do
+	TRANSFORMED_FILE=`echo "$FILE" | sed \
 		-e "s/%{NAME}/$OPTION_NAME/g" \
 		-e "s/%{TITLE}/$OPTION_TITLE/g" \
 		-e "s/%{VERSION}/$OPTION_VERSION/g" \
 		-e "s/%{ICON}/$OPTION_ICON/g" \
 		-e "s/%{WHEN}/$OPTION_WHEN/g"`
-	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
-		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
+	if [ "$FILE" != "$TRANSFORMED_FILE" ] ; then
+		mv "$FILE" "$TRANSFORMED_FILE"
 	fi
 done
 
-# copy over the images
+# copy over the build contents
+ls "$INPUT_PATH" | while read FILE ; do
+	if (["${FILE##*.}" == "image"] || ["${FILE##*.}" == "image"]) ; do
+		cp -Rf "$INPUT_PATH/$FILE" "$OUTPUT_PATH/Contents/Resources/"
+	fi
+done
 cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.image"
 cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.changes"
 

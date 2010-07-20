@@ -149,7 +149,7 @@ done
 # copy over the build contents
 ls -1 "$INPUT_PATH" | while read FILE ; do
 	if [ "${FILE##*.}" != "image" ] ; then
-		if [ "${FILE##*.}" != "changes" ]) ; then
+		if [ "${FILE##*.}" != "changes" ] ; then
 			cp -R "$INPUT_PATH/$FILE" "$OUTPUT_PATH/Contents/Resources/"
 		fi
 	fi

@@ -2,7 +2,7 @@
 
 # path
 ROOT=`dirname $0`
-BASE="$ROOT/Linux"
+BASE="$ROOT/Contents/Linux"
 
 # execute
 exec "$BASE/squeakvm" \

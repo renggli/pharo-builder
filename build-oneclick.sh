@@ -90,7 +90,7 @@ if [ -z "$OPTION_NAME" ] ; then
 fi
 
 if [ -z "$OPTION_TITLE" ] ; then
-    OPTION_TITLE="$OUTPUT_NAME"
+	OPTION_TITLE="$OUTPUT_NAME"
 fi
 
 if [ -z "$OPTION_VERSION" ] ; then
@@ -129,11 +129,11 @@ done
 # expand all the filenames
 find "$OUTPUT_PATH" | while read TEMPLATE_FILE ; do
 	TRANSFORMED_FILE=`echo "$TEMPLATE_FILE" | sed \
-        -e "s/%{NAME}/$OPTION_NAME/g" \
-        -e "s/%{TITLE}/$OPTION_TITLE/g" \
-        -e "s/%{VERSION}/$OPTION_VERSION/g" \
-        -e "s/%{ICON}/$OPTION_ICON/g" \
-        -e "s/%{WHEN}/$OPTION_WHEN/g"`
+		-e "s/%{NAME}/$OPTION_NAME/g" \
+		-e "s/%{TITLE}/$OPTION_TITLE/g" \
+		-e "s/%{VERSION}/$OPTION_VERSION/g" \
+		-e "s/%{ICON}/$OPTION_ICON/g" \
+		-e "s/%{WHEN}/$OPTION_WHEN/g"`
 	if [ "$TEMPLATE_FILE" != "$TRANSFORMED_FILE" ] ; then
 		mv "$TEMPLATE_FILE" "$TRANSFORMED_FILE"
 	fi

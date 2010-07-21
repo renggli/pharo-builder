@@ -2,14 +2,10 @@
 Gofer new
 	squeaksource: 'GitFS';
 	package: 'Filesystem';
-	package: 'GitFS';
+	package: 'FS-Git';
 	load.
 !
-Gofer new
-	squeaksource: 'Phit';
-	package: 'Phit';
-	load.
-!
+
 Preferences enable: #mercuryPanel.
 !
 

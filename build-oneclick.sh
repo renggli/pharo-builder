@@ -53,7 +53,7 @@ while getopts ":i:o:n:t:v:c:w:?" OPT ; do
 
 			INPUT_PATH=`dirname "$INPUT_IMAGE"`
 			if [ ! -d "$INPUT_PATH" ] ; then
-				echo "$(basename $0): input directory found ($INPUT_PATH)"
+				echo "$(basename $0): input directory not found ($INPUT_PATH)"
 				exit 1
 			fi
 
@@ -112,7 +112,11 @@ if [ -z "$OPTION_WHEN" ] ; then
 	OPTION_WHEN=`date +"%B %d, %Y"`
 fi
 
-# prepare output path
+# prepare output
+if [ -f "$OUTPUT_ARCH" ] ; then
+	rm -rf "$OUTPUT_ARCH"
+fi
+
 if [ -d "$OUTPUT_PATH" ] ; then
 	rm -rf "$OUTPUT_PATH"
 fi

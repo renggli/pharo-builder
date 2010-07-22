@@ -10,7 +10,7 @@ gvfs-set-attribute \
 	"$0" \
 	"metadata::custom-icon" \
 	"file://$RESOURCES/%{ICON}.png" \
-		> /dev/null
+		2> /dev/null
 
 # execute
 exec "$LINUX/squeakvm" \

@@ -61,10 +61,7 @@ while getopts ":i:o:n:t:v:c:w:?" OPT ; do
 		;;
 
 		# output
-		o)	OUTPUT_NAME="$OPTARG"
-			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME.app"
-			OUTPUT_ARCH="$BUILD_PATH/$OUTPUT_NAME.zip"
-		;;
+		o) OUTPUT_NAME="$OPTARG" ;;
 
 		# settings
 		n) OPTION_NAME="$OPTARG" ;;
@@ -114,6 +111,9 @@ if [ -z "$OPTION_WHEN" ] ; then
 fi
 
 # prepare output
+OUTPUT_PATH="$BUILD_PATH/$OPTION_NAME.app"
+OUTPUT_ARCH="$BUILD_PATH/$OUTPUT_NAME.zip"
+
 if [ -f "$OUTPUT_ARCH" ] ; then
 	rm -rf "$OUTPUT_ARCH"
 fi

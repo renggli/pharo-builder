@@ -167,7 +167,7 @@ cp "$ICONS_PATH/$OPTION_ICON.icns" "$OUTPUT_PATH/Contents/Resources/Squeak.icns"
 
 # zip up the application
 cd "$BUILD_PATH"
-zip --quiet --recurse-paths -9 "$OUTPUT_ARCH" "$OUTPUT_NAME.app"
+zip --quiet --recurse-paths -9 "$OUTPUT_ARCH" "$OPTION_NAME.app"
 cd - > /dev/null
 
 # remove the build directory

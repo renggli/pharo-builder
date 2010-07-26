@@ -1,2 +1,2 @@
-HDCoverageReport runPackages: #('Brazil-Tests-Core' 'Brazil-Tests-Morphic').
-HDLintReport runPackages: #('Brazil-Core' 'Brazil-Morphic').
+HDCoverageReport runPackages: #('Chic-Tests-Core' 'Chic-Tests-Morphic').
+HDLintReport runPackages: #('Chic-Core' 'Chic-Morphic').

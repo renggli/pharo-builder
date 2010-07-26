@@ -1,8 +1,8 @@
 "Brazil"
 Gofer new
 	renggli: 'chic';
-	package: 'Brazil-Core';
-	package: 'Brazil-Tests-Core';
-	package: 'Brazil-Morphic';
-	package: 'Brazil-Tests-Morphic';
+	package: 'Chic-Core';
+	package: 'Chic-Tests-Core';
+	package: 'Chic-Morphic';
+	package: 'Chic-Tests-Morphic';
 	load.

@@ -1,7 +1,7 @@
 %{TITLE} %{VERSION}
 
-- Mac: launch the app file
+- Mac: launch %{NAME}.app
 - Linux: launch %{NAME}.sh
-- Windows: launch %{NAME}.exe
+- Windows: launch %{NAME}.lnk
 
 This distribution has been built %{WHEN}.

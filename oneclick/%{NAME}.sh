@@ -9,7 +9,7 @@ RESOURCES="$ROOT/Contents/Resources"
 gvfs-set-attribute \
 	"$0" \
 	"metadata::custom-icon" \
-	"file://$RESOURCES/%{ICON}.png" \
+	"file://$RESOURCES/Squeak.png" \
 		2> /dev/null
 
 # execute
@@ -17,4 +17,4 @@ exec "$LINUX/squeakvm" \
 	-plugins "$LINUX" \
 	-encoding latin1 \
 	-vm-display-X11 \
-	"$RESOURCES/%{NAME}.image"
+	"$RESOURCES/Squeak.image"

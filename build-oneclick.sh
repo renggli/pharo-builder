@@ -10,6 +10,7 @@ BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
 
 IMAGES_PATH="$(readlink -f $(dirname $0))/images"
 TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
+ICONS_PATH="$(readlink -f $(dirname $0))/oneclick-icons"
 
 # help function
 function display_help() {
@@ -130,7 +131,6 @@ find "$OUTPUT_PATH" -name "*.template" | while read FILE ; do
 		-e "s/%{NAME}/$OPTION_NAME/g" \
 		-e "s/%{TITLE}/$OPTION_TITLE/g" \
 		-e "s/%{VERSION}/$OPTION_VERSION/g" \
-		-e "s/%{ICON}/$OPTION_ICON/g" \
 		-e "s/%{WHEN}/$OPTION_WHEN/g" \
 			"$FILE" > "${FILE%.*}"
 	chmod --reference="$FILE" "${FILE%.*}"
@@ -143,7 +143,6 @@ find "$OUTPUT_PATH" | while read FILE ; do
 		-e "s/%{NAME}/$OPTION_NAME/g" \
 		-e "s/%{TITLE}/$OPTION_TITLE/g" \
 		-e "s/%{VERSION}/$OPTION_VERSION/g" \
-		-e "s/%{ICON}/$OPTION_ICON/g" \
 		-e "s/%{WHEN}/$OPTION_WHEN/g"`
 	if [ "$FILE" != "$TRANSFORMED_FILE" ] ; then
 		mv "$FILE" "$TRANSFORMED_FILE"
@@ -158,8 +157,11 @@ ls -1 "$INPUT_PATH" | while read FILE ; do
 		fi
 	fi
 done
-cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.image"
-cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.changes"
+cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/Squeak.image"
+cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/Squeak.changes"
+cp "$ICONS_PATH/$OPTION_ICON.png" "$OUTPUT_PATH/Contents/Resources/Squeak.png"
+cp "$ICONS_PATH/$OPTION_ICON.ico" "$OUTPUT_PATH/Contents/Resources/Squeak.ico"
+cp "$ICONS_PATH/$OPTION_ICON.icns" "$OUTPUT_PATH/Contents/Resources/Squeak.icns"
 
 # zip up the application
 cd "$BUILD_PATH"

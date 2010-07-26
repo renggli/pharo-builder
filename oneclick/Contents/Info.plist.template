@@ -352,7 +352,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Squeak VM 4.2.5b1 http://www.squeak.org</string>
 	<key>CFBundleIconFile</key>
-	<string>%{ICON}.icns</string>
+	<string>Squeak.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.squeak.%{NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -407,7 +407,7 @@
 	<key>SqueakFloatingWindowGetsFocus</key>
 	<true/>
 	<key>SqueakImageName</key>
-	<string>%{NAME}.image</string>
+	<string>Squeak.image</string>
 	<key>SqueakMaxHeapSize</key>
 	<integer>536870912</integer>
 	<key>SqueakMouseCmdButton1</key>

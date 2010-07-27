@@ -1,2 +1,7 @@
 .AppleDouble
 :2e_*
+.DS_Store
+.svn
+*~
+*.swp
+*.tmproj

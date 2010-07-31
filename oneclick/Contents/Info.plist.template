@@ -407,7 +407,7 @@
 	<key>SqueakFloatingWindowGetsFocus</key>
 	<true/>
 	<key>SqueakImageName</key>
-	<string>Squeak.image</string>
+	<string>%{NAME}</string>
 	<key>SqueakMaxHeapSize</key>
 	<integer>536870912</integer>
 	<key>SqueakMouseCmdButton1</key>

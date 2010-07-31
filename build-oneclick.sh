@@ -159,8 +159,8 @@ ls -1 "$INPUT_PATH" | while read FILE ; do
 done
 
 # copy over specific files
-cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/Squeak.image"
-cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/Squeak.changes"
+cp "$INPUT_IMAGE" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.image"
+cp "$INPUT_CHANGES" "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME.changes"
 cp "$ICONS_PATH/$OPTION_ICON.png" "$OUTPUT_PATH/Contents/Resources/Squeak.png"
 cp "$ICONS_PATH/$OPTION_ICON.ico" "$OUTPUT_PATH/Contents/Resources/Squeak.ico"
 cp "$ICONS_PATH/$OPTION_ICON.icns" "$OUTPUT_PATH/Contents/Resources/Squeak.icns"

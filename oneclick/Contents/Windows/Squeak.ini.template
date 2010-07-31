@@ -10,5 +10,5 @@ UseDirectSound=1
 PriorityBoost=1
 B3DXUsesOpenGL=0
 CaseSensitiveFileMode=0
-ImageFile=..\Resources\Squeak.image
+ImageFile=..\Resources\%{NAME}.image
 WindowTitle=%{TITLE}

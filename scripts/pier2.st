@@ -25,3 +25,8 @@ Gofer new
 	package: 'Pier-TagCloud';
 	package: 'Pier-Twitter';
 	load.
+!
+"Setup Pier"
+PRPierFrame
+	registerAsApplication: 'pier'
+	kernel: PRDistribution new kernel

@@ -18,3 +18,8 @@ stream binary; reset.
 morph := (PNGReadWriter on: stream) nextImage asMorph.
 morph left: 10; top: 10; lock: true; sticky: true.
 World addMorph: morph.
+!
+"Managementt"
+Smalltalk 
+	at: #WAServerAdaptorBrowser
+	ifPresent: [ :class | class open position: 10 @ 100 ]

@@ -22,4 +22,4 @@ World addMorph: morph.
 "Management Browser"
 Smalltalk
 	at: #WAServerAdaptorBrowser
-	ifPresent: [ :class | class open position: 10 @ 100 ]
+	ifPresent: [ :class | class open position: 10 @ 120 ]

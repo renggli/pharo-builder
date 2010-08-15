@@ -9,7 +9,7 @@
 TOOLS_PATH="$(readlink -f $(dirname $0))/tools"
 
 # make the executable if not present
-if [ -f "$TOOLS_PATH/build-resize" ] ; then
+if [ ! -f "$TOOLS_PATH/build-resize" ] ; then
   make --directory="$TOOLS_PATH" all
 fi
 

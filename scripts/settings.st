@@ -1,26 +1,24 @@
 "Select Fonts"
 StrikeFont installDejaVu.
-Preferences setDefaultFonts: #(
-        (setBalloonHelpFontTo: 'BitmapDejaVu' 9)
-        (setButtonFontTo: 'BitmapDejaVu' 9)
-        (setCodeFontTo: 'BitmapDejaVu' 9)
-        (setHaloLabelFontTo: 'BitmapDejaVu' 9)
-        (setListFontTo: 'BitmapDejaVu' 9)
-        (setMenuFontTo: 'BitmapDejaVu' 9)
-        (setSystemFontTo: 'BitmapDejaVu' 9)
-        (setWindowTitleFontTo: 'BitmapDejaVuBold' 12)).
+StandardFonts setFontsFromSpec: #(
+    (balloonFont: 'BitmapDejaVu' 7)
+    (buttonFont: 'BitmapDejaVu' 9)
+    (codeFont: 'BitmapDejaVu' 9)
+    (defaultFont: 'BitmapDejaVu' 9)
+    (haloFont: 'BitmapDejaVu' 7)
+    (listFont: 'BitmapDejaVu' 9)
+    (menuFont: 'BitmapDejaVu' 9)
+    (windowTitleFont: 'BitmapDejaVuBold' 12)).
 !
 "Cleanup Environment"
 UIThemeWatery2 beCurrent.
 World color: Color white.
 World submorphs do: [ :each |
-        (#(SketchMorph ImageMorph) includes: each class name)
-                ifTrue: [ each delete ] ].
+	(#(SketchMorph ImageMorph) includes: each class name)
+		ifTrue: [ each delete ] ].
+SystemWindow fullScreenMargin: 0.
 WorldState showUpdateOptionInWorldMenu: false.
-!
-"Set decent Preferences"
-Preferences enable: #menuColorFromWorld.
-Preferences disable: #useNewDiffToolsForMC.
-Preferences disable: #fadedBackgroundWindows.
-Preferences disable: #windowAnimation.
-Preferences enable: #noWindowAnimationForClosing.
+PSMCPatchMorph usedByDefault: false.
+UITheme currentAnimationSettings
+	useAnimation: false;
+	animateClosing: false.

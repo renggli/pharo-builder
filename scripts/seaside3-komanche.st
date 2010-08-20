@@ -10,3 +10,6 @@ Gofer new
     package: 'Seaside-Adaptors-Comanche';
     package: 'Seaside-Tests-Adaptors-Comanche';
     load.
+!
+"Start Komanche"
+(WAComancheAdaptor port: 8080) start

@@ -1,21 +1,25 @@
 #!/bin/bash
+#
+# build-resize.sh -- Resize the image file
+#
+# Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
+#
 
-#########################################
-#
-# Author: Max Leske						#
-# Date: 30.04.2010						#
-#										#
-#########################################
-#
-# Purpose:
-# The following opens a Squeak image and replaces bytes 24 to 27.
-# These bytes encode integers (little endian) that represent the initial window size.
-#
-############
-#
-# Window size: 1032x1920
-# big endian hex: 0408 0780
-# little endian hex: 0804 8007
-#
-############
-echo -e \\x08\\x04\\x80\\x07 | dd of="$1" obs=1 seek=24 conv=block,notrunc cbs=4
+# directory configuration
+BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
+TOOLS_PATH="$(readlink -f $(dirname $0))/tools"
+
+# input image
+if [ -f "$BUILD_PATH/$1/$1.image" ] ; then
+	INPUT_IMAGE="$BUILD_PATH/$1/$1.image"
+elif [ -f "$BUILD_PATH/$1.image" ] ; then
+	INPUT_IMAGE="$BUILD_PATH/$1.image"
+fi
+
+# make the executable if not present
+if [ ! -f "$TOOLS_PATH/build-resize" ] ; then
+  make --directory="$TOOLS_PATH" all
+fi
+
+# pass on to exectuable
+"$TOOLS_PATH/build-resize" "$INPUT_IMAGE" "$2" "$3"

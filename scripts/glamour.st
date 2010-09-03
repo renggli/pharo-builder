@@ -1,7 +1,33 @@
 "Glamour"
 Gofer new
-	squeaksource: 'Glamour'; 
-	package: 'ConfigurationOfGlamour';
+	squeaksource: 'CollectionExtensions';
+	package: 'CollectionExtensions';
 	load.
-(Smalltalk at: #ConfigurationOfGlamour)
-	perform: #loadDefault.
+Gofer new
+	squeaksource: 'HealthReportProducer';
+	package: 'HealthReportProducer';
+	load.
+Gofer new
+	squeaksource: 'Mondrian'; 
+	package: 'Mondrian';
+	package: 'MondrianPaintings';
+	load.
+Gofer new
+    squeaksource: 'Glamour';
+    package: 'Glamour-Announcements';
+    package: 'Glamour-Browsers';
+    package: 'Glamour-Core';
+    package: 'Glamour-Examples';
+    package: 'Glamour-Helpers';
+    package: 'Glamour-Morphic';
+    package: 'Glamour-Presentations';
+    package: 'Glamour-Reporter';
+    package: 'Glamour-Scripting';
+    package: 'Glamour-Tests';
+    package: 'Glamour-Tools';
+    load.
+!
+Gofer new
+    renggli: 'petit';
+    package: 'PetitGui';
+	load

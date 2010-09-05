@@ -4,6 +4,9 @@ Gofer new
 	package: 'AST-Core';
 	package: 'AST-Semantic';
 	package: 'Refactoring-Core';
+	package: 'Refactoring-Changes';
+	package: 'Refactoring-Critics';
+	package: 'Refactoring-Environment';
 	package: 'Refactoring-Spelling';
 	load.
 !
@@ -31,4 +34,3 @@ Gofer new
 !
 "Select Tools"
 SystemBrowser default: (Smalltalk at: #OBSystemBrowserAdaptor).
-

@@ -5,19 +5,21 @@ Install the support scripts, either by downloading the latest code directly from
 
 	git clone git://github.com/renggli/builder.git
 	
-You should get a directory structure with several empty directories, this readme file and the build.sh bash script.
+You should get a directory structure with several empty directories, this readme file and several shell scripts.
 
-1. Create an initial build image that will be used as the source for all builds. Get a distribution image from <http://www.pharo-project.org/pharo-download> and unzip the image in the "images" directory.
+1. Get a distribution image from <http://www.pharo-project.org/pharo-download> and unzip the image in the "images" directory. You can also script that in your initial build-step and fetch the official stable images from <http://pharo-project.org/pharo-download/stable-core> or <http://pharo-project.org/pharo-download/stable>.
 
-2. Review or create your own build scripts in the directory "scripts". Use whatever loader you want: Gofer, Metacello, Mason, ... Just make sure that it is present in the source image. There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff. Currently this is mostly done using Gofer, but later something more sophisticated like Mason could be used. The sample builds scripts are just a starting point for creating your own build scripts for your own projects.
+2. Review or create your own build scripts in the directory "scripts". Use whatever loader you want: Gofer, Metacello, Mason, ... There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff and set settings. The sample builds scripts are a good starting point for creating your own build scripts for your own projects.
 
 3. The "cache" directory contains the package cache of the builds. It is initially empty.
 
-4. The "builds" directory is only used when the build script is called from the command-line. Normally it is and remains empty.
+4. The "builds" directory is only used when the build script is called from the command-line. When used from Hudson it remains empty.
 
 5. The "sources" directory contains the .sources files that your images might need. Available sources files are linked to the build directory if present.
 
-The generic build script build.sh works in the described directory structure. Preferably it is called from Hudson, but you can also call it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
+6. The "oneclick" directory contains a template for building oneclick images. "oneclick-icons" contains a collection of icons to be used with the oneclick images.
+
+The generic build script build.sh works on this directory structure. Also the other shell scripts expect the structure like this. Preferably these scripts are called from Hudson, but you can also call it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
 
 PART B - Integrate with Hudson
 ==============================
@@ -36,7 +38,7 @@ Start the Hudson server.
 Add new Hudson job
 - from Hudson dashboard, select "New Job"
 - fill in a job name, e.g. "Pharo"
-- choose the "Build a free-style software project" radio button
+- choose the "Build aG free-style software project" radio button
 - click on OK
 
 Configure the new job
@@ -82,4 +84,6 @@ HUDSON PLUGINS
 
 - The "Green Balls" plugin makes the Hudson GUI look slightly better.
 
-- The "Violations" plugin reports Lint errors in Hudson (through pmd).
+- The "Checkstyle Plug-in" reports lint errors in Hudson.
+
+- The "Hudson Emma plugin" reports test coverage in Hudson.

@@ -5,25 +5,19 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>SqueakFFIPrims</string>
-	<key>CFBundleGetInfoString</key>
-	<string>SqueakFFIPrims for Squeak</string>
-	<key>CFBundleIconFile</key>
-	<string>SqueakPlugin.icns</string>
+	<string>FloatArrayPlugin</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.squeak.SqueakFFIPrims</string>
+	<string>com.apple.carbonbundletemplate</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>SqueakFFIPrims for Squeak</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.01</string>
 	<key>CFBundleSignature</key>
 	<string>FAST</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 </dict>

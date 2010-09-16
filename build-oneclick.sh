@@ -165,6 +165,9 @@ cp "$ICONS_PATH/$OPTION_ICON.png" "$OUTPUT_PATH/Contents/Resources/Squeak.png"
 cp "$ICONS_PATH/$OPTION_ICON.ico" "$OUTPUT_PATH/Contents/Resources/Squeak.ico"
 cp "$ICONS_PATH/$OPTION_ICON.icns" "$OUTPUT_PATH/Contents/Resources/Squeak.icns"
 
+# patch the image with cog support
+build.sh -i "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME" -s cog -o "$OUTPUT_PATH/Contents/Resources/$OPTION_NAME"
+
 # zip up the application
 cd "$BUILD_PATH"
 zip --quiet --recurse-paths -9 "$OUTPUT_ARCH" "$OPTION_NAME.app"

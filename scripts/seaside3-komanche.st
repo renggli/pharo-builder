@@ -12,4 +12,6 @@ Gofer new
     load.
 !
 "Start Komanche"
-(WAComancheAdaptor port: 8080) start
+(WAComancheAdaptor port: 8080)
+	codec: GRPharoUtf8Codec new;
+	start

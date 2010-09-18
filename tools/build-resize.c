@@ -18,13 +18,13 @@ int main(int argc, const char* argv[]) {
 	int height = atoi(argv[3]);
 
 	// check width
-    if (width <= 10) {
+    if (width <= 0 || width > 0xFFFF) {
 		fprintf(stderr, "build-resize: invalid width (%d)\n", width);
 		return 1;
 	}
 
 	// check height
-	if (height <= 10) {
+	if (height <= 0 || height > 0xFFFF) {
 		fprintf(stderr, "build-resize: invalid height (%d)\n", height);
 		return 1;
 	}

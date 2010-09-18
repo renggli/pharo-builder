@@ -8,7 +8,7 @@
 #
 
 # vm configuration
-PHARO_VM="/usr/local/lib/squeak/3.11.3-2135/squeakvm"
+PHARO_VM="squeak"
 PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration

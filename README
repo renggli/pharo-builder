@@ -21,10 +21,12 @@ You should get a directory structure with several empty directories, this readme
 
 The generic build script build.sh works on this directory structure. Also the other shell scripts expect the structure like this. Preferably these scripts are called from Hudson, but you can also call it from the command line. build.sh takes 3 kinds of arguments, an input image name, an output image name, and a series of scripts to load into that image. See the help for details.
 
+Similary build-oneclick.sh takes and input image and builds a one-click image from it. Run the script without any arguments to get a listing of supported settings.
+
 PART B - Integrate with Hudson
 ==============================
 
-Download hudson.war from <http://hudson-ci.org/>.
+Download "hudson.war" from <http://hudson-ci.org/>.
 
 Start the Hudson server.
 - add build.sh to your path, so that can be easily called from within Hudson
@@ -38,7 +40,7 @@ Start the Hudson server.
 Add new Hudson job
 - from Hudson dashboard, select "New Job"
 - fill in a job name, e.g. "Pharo"
-- choose the "Build aG free-style software project" radio button
+- choose the "Build as free-style software project" radio button
 - click on OK
 
 Configure the new job
@@ -46,19 +48,22 @@ Configure the new job
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
 - in the command textarea that appears, type the build specification:
 
-  build.sh -i PharoCore-1.0-10505rc1 -s gofer -s settings -o core
-
-  build.sh -i core -s omnibrowser -o omnibrowser
+  build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
   build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
+
+  build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
 
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
 
-- in the "Post-build Actions" section, enable "Report Violations" (requires the Violations plugin to be installed)
-- enter "**/*-Lint.xml" into the text input labelled "pmd XML filename pattern"
+- in the "Post-build Actions" section, enable "Publish Checkstyle analysis results" (requires the Checkstyle plugin to be installed)
+- enter "**/*-Lint.xml" into the text input labelled "Checkstyle results"
+
+- in the "Post-build Actions" section, enable "Record Emma coverage report" (requires the Hudson Emma plugin to be installed)
+- enter "**/*-Coverage.xml" into the text input labelled "Folders or files containing Emma XML reports"
 
 - in the "Post-build Actions" section, enable "Archive the artifacts"
-- enter the "Files to archive" as "**/*.image and **/*.changes"
+- enter the "Files to archive" as "**/*.image, **/*.changes, *.zip"
 
 - save the configuration changes.
 
@@ -82,8 +87,10 @@ HUDSON PLUGINS
 
 - The "URL Change Trigger" plugin is useful to automatically trigger builds when the Monticello repository changes.
 
-- The "Green Balls" plugin makes the Hudson GUI look slightly better.
-
 - The "Checkstyle Plug-in" reports lint errors in Hudson.
 
 - The "Hudson Emma plugin" reports test coverage in Hudson.
+
+- The "Green Balls" plugin makes the Hudson GUI look slightly better.
+
+- The "Google Analytics Plugin" tracks users of Hudson.

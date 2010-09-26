@@ -29,4 +29,6 @@ Gofer new
 "Setup Pier"
 PRPierFrame
 	registerAsApplication: 'pier'
-	kernel: PRDistribution new kernel
+	kernel: PRDistribution new kernel.
+WADispatcher default
+	defaultName: 'pier'.

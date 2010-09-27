@@ -4,8 +4,6 @@ Gofer new
 	package: 'AST-Compiler';
 	load.
 Gofer new
-    squeaksource: 'metalchemy';
-    package: 'GeppettoMetaObject';
-    load.
-!
-GMCompiler enable.
+	squeaksource: 'metalchemy';
+	package: 'GeppettoMetaObject';
+	load.

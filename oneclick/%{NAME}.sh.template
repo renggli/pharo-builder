@@ -13,7 +13,7 @@ gvfs-set-attribute \
 		2> /dev/null
 
 # execute
-exec "$LINUX/squeakvm" \
+exec "$LINUX/squeak" \
 	-plugins "$LINUX" \
 	-encoding latin1 \
 	-vm-display-X11 \

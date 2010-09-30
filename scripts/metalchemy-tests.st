@@ -1,2 +1,2 @@
-HDTestReport runPackages: #('GeppettoMetaObject').
-HDLintReport runPackages: #('GeppettoMetaObject').
+HDTestReport runPackages: #('GeppettoMetaObject' 'Proserpina').
+HDLintReport runPackages: #('GeppettoMetaObject' 'Proserpina').

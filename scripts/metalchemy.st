@@ -5,5 +5,6 @@ Gofer new
 	load.
 Gofer new
 	squeaksource: 'metalchemy';
+	package: 'Proserpina';
 	package: 'GeppettoMetaObject';
 	load.

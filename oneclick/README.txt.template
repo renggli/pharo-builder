@@ -4,4 +4,5 @@
 - Linux: launch %{NAME}.sh
 - Windows: launch %{NAME}.lnk
 
-This distribution has been built %{WHEN}.
+This distribution was built %{WHEN}.
+

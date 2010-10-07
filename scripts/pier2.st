@@ -16,14 +16,14 @@ Gofer new
 !
 "Load Pier 2 Addons"
 Gofer new
-    renggli: 'pier2addons';
+	renggli: 'pier2addons';
 	package: 'Pier-Setup';
 	package: 'Pier-Documents';
 	package: 'Pier-EditorEnh';
 	package: 'Pier-LinkChecker';
 	package: 'Pier-Google';
 	package: 'Pier-TagCloud';
-	package: 'Pier-Twitter';
+	package: 'Pier-JQuery';
 	load.
 !
 "Setup Pier"

@@ -91,14 +91,14 @@ Gofer new
 !
 "Other Packages"
 Gofer new
-    squeaksource: 'Seaside30';
-    package: 'Seaside-Welcome';
+	squeaksource: 'Seaside30';
+	package: 'Seaside-Welcome';
 	package: 'Seaside-Tests-Welcome';
-    package: 'Seaside-HTML5';
-    package: 'Seaside-Tests-HTML5';
-    package: 'Seaside-InternetExplorer';
-    package: 'Seaside-Tests-InternetExplorer';
-    package: 'Seaside-Email';
-    package: 'Seaside-Tests-Email';
-    package: 'Seaside-Pharo-Email';
-    load.
+	package: 'Seaside-HTML5';
+	package: 'Seaside-Tests-HTML5';
+	package: 'Seaside-InternetExplorer';
+	package: 'Seaside-Tests-InternetExplorer';
+	package: 'Seaside-Email';
+	package: 'Seaside-Tests-Email';
+	package: 'Seaside-Pharo-Email';
+	load.

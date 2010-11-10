@@ -93,6 +93,7 @@ Gofer new
 Gofer new
 	squeaksource: 'Seaside30';
 	package: 'Seaside-Welcome';
+	package: 'Seaside-Pharo-Welcome';
 	package: 'Seaside-Tests-Welcome';
 	package: 'Seaside-HTML5';
 	package: 'Seaside-Tests-HTML5';

@@ -1,1 +1,1 @@
-HDTestReport runPackages: #('GeppettoMetaObject' 'Proserpina').
+HDTestReport runPackages: #('GeppettoMetaObject' 'Proserpina' 'MultipleMops').

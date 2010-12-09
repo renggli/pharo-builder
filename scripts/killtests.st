@@ -6,3 +6,14 @@
 			ifTrue: [ gofer package: each packageName ].
 		gofer ])
 	unload.
+!
+"Unload Useless Packages (Pharo 1.2)"
+"Gofer new
+        package: 'Finder';
+        package: 'FixUnderscores';
+        package: 'Glamour-Morphic-Theme';
+        package: 'HelpSystem-Core';
+        package: 'Announcements-Help';
+        package: 'Regex-Help';
+        unload."
+

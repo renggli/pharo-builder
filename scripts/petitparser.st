@@ -10,7 +10,8 @@ Gofer new
 !
 "PetitParser Examples"
 Gofer new
-    renggli: 'petit';
+	renggli: 'petit';
 	package: 'PetitSmalltalk';
+	package: 'PetitJson';
 	package: 'PetitXml';
 	load.

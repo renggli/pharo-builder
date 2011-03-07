@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # build.sh -- Builds Pharo images using a series of Smalltalk
-#   scripts. Best to be used together with Hudson.
+#   scripts. Best to be used together with Jenkins.
 #
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
@@ -25,7 +25,7 @@ SCRIPTS=("$SCRIPTS_PATH/before.st")
 # help function
 function display_help() {
 	echo "$(basename $0) -i input -o output {-s script} "
-	echo " -i input product name, image from images-directory, or successful hudson build"
+	echo " -i input product name, image from images-directory, or successful jenkins build"
 	echo " -o output product name"
 	echo " -s one or more scripts from the scripts-directory to build the image"
 }

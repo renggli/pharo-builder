@@ -6,7 +6,7 @@ Gofer new
 	load.
 !
 
-Preferences enable: #mercuryPanel.
+OBCodeBrowser mercureyPanelEnabled: true.
 !
 
 "Create initial environment"

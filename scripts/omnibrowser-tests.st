@@ -24,7 +24,7 @@ Gofer new
 "Tool Tests"
 Gofer new
 	renggli: 'unsorted';
-    package: 'ShoutTests';
+	package: 'ShoutTests';
 	load.
 !
 "Run the Refactoring and OmniBrowser Tests"

@@ -2,18 +2,19 @@
 (MCWorkingCopy allManagers 
 	inject: Gofer new
 	into: [ :gofer :each |
-		((each packageName endsWith: 'Test') or: [ each packageName endsWith: 'Tests' ])
+		(each packageName includesSubString: 'Test')
 			ifTrue: [ gofer package: each packageName ].
 		gofer ])
 	unload.
 !
-"Unload Useless Packages (Pharo 1.2)"
-"Gofer new
-        package: 'Finder';
+"Unload Cruft Packages"
+Gofer new
         package: 'FixUnderscores';
-        package: 'Glamour-Morphic-Theme';
         package: 'HelpSystem-Core';
-        package: 'Announcements-Help';
-        package: 'Regex-Help';
-        unload."
-
+	package: 'SimpleMorphic';
+	package: 'Glamour-Morphic-Theme';
+	package: 'Announcements-Help';
+	package: 'Regex-Help';
+	package: 'Finder';
+	package: 'DialogItemsChooser';
+        unload.

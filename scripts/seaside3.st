@@ -102,4 +102,5 @@ Gofer new
 	package: 'Seaside-Email';
 	package: 'Seaside-Tests-Email';
 	package: 'Seaside-Pharo-Email';
+	package: 'Seaside-Tests-Pharo-Email';
 	load.

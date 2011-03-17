@@ -17,6 +17,7 @@ Smalltalk allClassesAndTraitsDo: [ :each |
 "Cleanup System Memory"
 Smalltalk garbageCollect.
 Symbol compactSymbolTable.
+Deprecation raiseWarning: true.
 !
 "Save and Quit"
 WorldState addDeferredUIMessage: [

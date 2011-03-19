@@ -9,7 +9,7 @@ Gofer new
 "Seaside"
 [ Gofer new
 	squeaksource: 'Seaside';
-	package: 'Seaside2.8a1';
+	package: 'Seaside2' constraint: [ :ref | ref branch = '8a1' ];
 	load ]
 		valueSupplyingAnswers: { 
 			{ 'username'. 'admin' }.

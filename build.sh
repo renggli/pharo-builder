@@ -8,7 +8,7 @@
 #
 
 # vm configuration
-PHARO_VM="squeak"
+PHARO_VM="cog"
 PHARO_PARAM="-nodisplay -nosound"
 
 # directory configuration

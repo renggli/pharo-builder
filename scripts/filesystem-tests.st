@@ -1,3 +1,3 @@
 "Run the Filesystem Tests"
-HDTestReport runPackages: #('Filesystem').
-HDLintReport runPackages: #('Filesystem').
+HDTestReport runPackages: #('FS-Tests-Core').
+HDLintReport runPackages: #('FS-Core' 'FS-AnsiStreams' 'FS-Disk' 'FS-Memory' 'FS-Zip').

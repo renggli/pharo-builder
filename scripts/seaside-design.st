@@ -22,4 +22,6 @@ World addMorph: morph.
 "Management Browser"
 Smalltalk
 	at: #WAServerAdaptorBrowser
-	ifPresent: [ :class | class open position: 10 @ 120 ]
+	ifPresent: [ :class |
+		class open.
+		SystemWindow topWindow position: 10 @ 120 ]

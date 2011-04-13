@@ -1,4 +1,5 @@
-(ToolSet browse: WACounter selector: #renderContentOn:)
+ToolSet browse: WACounter selector: #renderContentOn:.
+SystemWindow topWindow
 	right: World width - 10;
 	bottom: World height - 40.
 !

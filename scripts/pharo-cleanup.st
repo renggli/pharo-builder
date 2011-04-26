@@ -12,7 +12,6 @@ Gofer new
         package: 'FixUnderscores';
         package: 'HelpSystem-Core';
 	package: 'SimpleMorphic';
-	package: 'Glamour-Morphic-Theme';
 	package: 'Announcements-Help';
 	package: 'Regex-Help';
 	package: 'Finder';

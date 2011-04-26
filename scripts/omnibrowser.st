@@ -26,7 +26,6 @@ Gofer new
 Gofer new
 	renggli: 'unsorted';
 	package: 'Shout';
-	package: 'RoelTyper';
 	package: 'ECompletion';
 	package: 'ECompletionOmniBrowser';
 	load.

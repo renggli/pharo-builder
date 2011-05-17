@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]) {
 	int height = atoi(argv[3]);
 
 	// check width
-    if (width <= 0 || width > 0xFFFF) {
+	if (width <= 0 || width > 0xFFFF) {
 		fprintf(stderr, "build-resize: invalid width (%d)\n", width);
 		return 1;
 	}
@@ -38,13 +38,13 @@ int main(int argc, const char* argv[]) {
 
 	// patch image file
 	int size = (width << 16) | (height & 0xFFFF);
-    fseek(fimage, 24, SEEK_SET);
+	fseek(fimage, 24, SEEK_SET);
 	fwrite(&size, sizeof(size), 1, fimage);
 
 	// close file
 	fclose(fimage);
 
 	// success
-    return 0;
+	return 0;
 
 }

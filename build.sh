@@ -8,7 +8,7 @@
 #
 
 # directory configuration
-BASE_PATH="$(cd $(dirname \"$0\") && pwd)"
+BASE_PATH="$(cd "$(dirname "$0")" && pwd)"
 BUILD_PATH="${WORKSPACE:=$BASE_PATH/builds}"
 
 IMAGES_PATH="$BASE_PATH/images"

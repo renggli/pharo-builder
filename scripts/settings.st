@@ -18,7 +18,7 @@ World submorphs do: [ :each |
 		ifTrue: [ each delete ] ].
 SystemWindow fullScreenMargin: 0.
 WorldState showUpdateOptionInWorldMenu: false.
-UITheme selectionTextColor: Color black.
+PSMCPatchMorph usedByDefault: false.
 UITheme currentAnimationSettings
 	useAnimation: false;
 	animateClosing: false.

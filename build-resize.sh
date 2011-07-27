@@ -2,12 +2,13 @@
 #
 # build-resize.sh -- Resize the image file
 #
-# Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
+# Copyright (c) 2011 Lukas Renggli <renggli@gmail.com>
 #
 
 # directory configuration
-BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
-TOOLS_PATH="$(readlink -f $(dirname $0))/tools"
+BASE_PATH="$(readlink -f $(dirname $0))"
+BUILD_PATH="${WORKSPACE:=$BASE_PATH/builds}"
+TOOLS_PATH="$BASE_PATH/tools"
 
 # input image
 if [ -f "$BUILD_PATH/$1/$1.image" ] ; then

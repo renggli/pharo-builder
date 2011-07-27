@@ -2,15 +2,16 @@
 #
 # build-oneclick.sh -- Builds Pharo based One-Click images
 #
-# Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
+# Copyright (c) 2011 Lukas Renggli <renggli@gmail.com>
 #
 
 # directory configuration
-BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
+BASE_PATH="$(readlink -f $(dirname $0))"
+BUILD_PATH="${WORKSPACE:=$BASE_PATH/builds}"
 
-IMAGES_PATH="$(readlink -f $(dirname $0))/images"
-TEMPLATE_PATH="$(readlink -f $(dirname $0))/oneclick"
-ICONS_PATH="$(readlink -f $(dirname $0))/oneclick-icons"
+IMAGES_PATH="$BASE_PATH/images"
+TEMPLATE_PATH="$BASE_PATH/oneclick"
+ICONS_PATH="$BASE_PATH/oneclick-icons"
 
 # help function
 function display_help() {

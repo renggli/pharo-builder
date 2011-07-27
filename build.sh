@@ -143,19 +143,18 @@ exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 # wait for the process to terminate, or a debug log
 if [ $! ] ; then
 	while kill -0 $! 2> /dev/null ; do
-		if [ -f "$OUTPUT_DEBUG" -o -f "$OUTPUT_DUMP" ] ; then
+		if [ -f "$OUTPUT_DEBUG" || -f "$OUTPUT_DUMP" ] ; then
 			sleep 5
 			kill -s SIGKILL $! 2> /dev/null
 			if [ -f "$OUTPUT_DEBUG" ] ; then
-				echo "$(basename $0): Smalltalk Error ($PHARO_VM)"
+				echo "$(basename $0): execution exception ($PHARO_VM)"
 				cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
 			else if [ -f "$OUTPUT_DUMP" ] ; then
-				echo "$(basename $0): VM Error ($PHARO_VM)"
+				echo "$(basename $0): execution crashed ($PHARO_VM)"
 				cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
 			fi
 			exit 1
 		fi
-		
 		sleep 1
 	done
 else

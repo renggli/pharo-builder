@@ -143,7 +143,7 @@ exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 # wait for the process to terminate, or a debug log
 if [ $! ] ; then
 	while kill -0 $! 2> /dev/null ; do
-		if [ -f "$OUTPUT_DEBUG" || -f "$OUTPUT_DUMP" ] ; then
+		if [ -f "$OUTPUT_DEBUG" ] || [ -f "$OUTPUT_DUMP" ] ; then
 			sleep 5
 			kill -s SIGKILL $! 2> /dev/null
 			if [ -f "$OUTPUT_DEBUG" ] ; then

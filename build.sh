@@ -7,17 +7,35 @@
 # Copyright (c) 2010 Lukas Renggli <renggli@gmail.com>
 #
 
-# vm configuration
-PHARO_VM="cog"
-PHARO_PARAM="-nodisplay -nosound"
-
 # directory configuration
-BUILD_PATH="${WORKSPACE:=$(readlink -f $(dirname $0))/builds}"
+BASE_PATH="$(readlink -f $(dirname $0))"
+BUILD_PATH="${WORKSPACE:=$BASE_PATH/builds}"
 
-IMAGES_PATH="$(readlink -f $(dirname $0))/images"
-SCRIPTS_PATH="$(readlink -f $(dirname $0))/scripts"
-SOURCES_PATH="$(readlink -f $(dirname $0))/sources"
-BUILD_CACHE="$(readlink -f $(dirname $0))/cache"
+IMAGES_PATH="$BASE_PATH/images"
+SCRIPTS_PATH="$BASE_PATH/scripts"
+SOURCES_PATH="$BASE_PATH/sources"
+VM_PATH="$BASE_PATH/oneclick/Contents"
+BUILD_CACHE="$BASE_PATH/cache"
+
+# vm configuration
+case "$(uname -s)" in
+	"Linux")
+		PHARO_VM="$VM_PATH/Linux/squeak"
+		PHARO_PARAM="-nodisplay -nosound"
+		;;
+	"Darwin")
+                PHARO_VM="$VM_PATH/MacOS/Squeak VM Opt"
+                PHARO_PARAM="-nodisplay -nosound"
+                ;;
+	"Cygwin")
+		PHARO_VM="$VM_PATH/Windows/Squeak.exe"
+                PHARO_PARAM="-nodisplay -nosound"
+                ;;
+	*)
+		echo "$(basename $0) unknown platform $(uname -s)"
+		exit 1
+		;;
+esac
 
 # build configuration
 SCRIPTS=("$SCRIPTS_PATH/before.st")

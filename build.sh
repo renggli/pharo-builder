@@ -143,16 +143,15 @@ exec "$PHARO_VM" $PHARO_PARAM "$OUTPUT_IMAGE" "$OUTPUT_SCRIPT" &
 # wait for the process to terminate, or a debug log
 if [ $! ] ; then
 	while kill -0 $! 2> /dev/null ; do
-		if [ -f "$OUTPUT_DEBUG" ] || [ -f "$OUTPUT_DUMP" ] ; then
+		if [ -f "$OUTPUT_DUMP" ] || [ -f "$OUTPUT_DEBUG" ] ; then
 			sleep 5
 			kill -s SIGKILL $! 2> /dev/null
-			if [ -f "$OUTPUT_DEBUG" ] ; then
-				echo "$(basename $0): execution exception ($PHARO_VM)"
-				cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
-			fi
 			if [ -f "$OUTPUT_DUMP" ] ; then
-				echo "$(basename $0): execution crashed ($PHARO_VM)"
+				echo "$(basename $0): VM aborted ($PHARO_VM)"
 				cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
+			elif [ -f "$OUTPUT_DEBUG" ] ; then
+				echo "$(basename $0): Execution aborted ($PHARO_VM)"
+				cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
 			fi
 			exit 1
 		fi

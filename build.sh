@@ -4,7 +4,7 @@
 #   scripts. Best to be used together with Jenkins.
 #
 # Copyright (c) 2010 Yanni Chiu <yanni@rogers.com>
-# Copyright (c) 2011 Lukas Renggli <renggli@gmail.com>
+# Copyright (c) 2010-2011 Lukas Renggli <renggli@gmail.com>
 #
 
 # directory configuration
@@ -21,15 +21,15 @@ BUILD_CACHE="$BASE_PATH/cache"
 case "$(uname -s)" in
 	"Linux")
 		PHARO_VM="$VM_PATH/Linux/squeak"
-		PHARO_PARAM="-nodisplay -nosound"
+		PHARO_PARAM="-plugins $(basepath $PHARO_VM) -nodisplay -nosound"
 		;;
 	"Darwin")
 		PHARO_VM="$VM_PATH/MacOS/Squeak VM Opt"
-		PHARO_PARAM="-nodisplay -nosound"
+		PHARO_PARAM="-headless"
 		;;
 	"Cygwin")
 		PHARO_VM="$VM_PATH/Windows/Squeak.exe"
-		PHARO_PARAM="-nodisplay -nosound"
+		PHARO_PARAM="-headless"
 		;;
 	*)
 		echo "$(basename $0): unknown platform $(uname -s)"

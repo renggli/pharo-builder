@@ -2,7 +2,7 @@
 #
 # build-oneclick.sh -- Builds Pharo based One-Click images
 #
-# Copyright (c) 2011 Lukas Renggli <renggli@gmail.com>
+# Copyright (c) 2010-2011 Lukas Renggli <renggli@gmail.com>
 #
 
 # directory configuration

@@ -2,7 +2,7 @@
 #
 # build-resize.sh -- Resize the image file
 #
-# Copyright (c) 2011 Lukas Renggli <renggli@gmail.com>
+# Copyright (c) 2010-2011 Lukas Renggli <renggli@gmail.com>
 #
 
 # directory configuration

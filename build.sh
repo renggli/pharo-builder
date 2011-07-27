@@ -21,7 +21,7 @@ BUILD_CACHE="$BASE_PATH/cache"
 case "$(uname -s)" in
 	"Linux")
 		PHARO_VM="$VM_PATH/Linux/squeak"
-		PHARO_PARAM="-plugins $(basepath $PHARO_VM) -nodisplay -nosound"
+		PHARO_PARAM="-plugins $(dirname $PHARO_VM) -nodisplay -nosound"
 		;;
 	"Darwin")
 		PHARO_VM="$VM_PATH/MacOS/Squeak VM Opt"

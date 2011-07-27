@@ -20,9 +20,9 @@ BUILD_CACHE="$BASE_PATH/cache"
 # vm configuration
 case "$(uname -s)" in
 	"Linux")
-		if [ -f "$(which cog)"] ; then
+		if [ -f "$(which cog)" ] ; then
 			PHARO_VM="$(which cog)"
-		elif [ -f "$(which squeak)"] ; then
+		elif [ -f "$(which squeak)" ] ; then
 			PHARO_VM="$(which squeak)"
 		else
 			PHARO_VM="$VM_PATH/Linux/squeak"

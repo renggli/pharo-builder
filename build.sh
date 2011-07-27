@@ -149,7 +149,8 @@ if [ $! ] ; then
 			if [ -f "$OUTPUT_DEBUG" ] ; then
 				echo "$(basename $0): execution exception ($PHARO_VM)"
 				cat "$OUTPUT_DEBUG" | tr '\r' '\n' | sed 's/^/  /'
-			else if [ -f "$OUTPUT_DUMP" ] ; then
+			fi
+			if [ -f "$OUTPUT_DUMP" ] ; then
 				echo "$(basename $0): execution crashed ($PHARO_VM)"
 				cat "$OUTPUT_DUMP" | tr '\r' '\n' | sed 's/^/  /'
 			fi

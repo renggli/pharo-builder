@@ -18,3 +18,8 @@ Gofer new
     squeaksource: 'Seaside30';
     package: 'Seaside-Adaptors-Swazoo';
     load.
+!
+"Start Swazoo"
+(WASwazooAdaptor port: 8080)
+        codec: GRPharoUtf8Codec new;
+        start

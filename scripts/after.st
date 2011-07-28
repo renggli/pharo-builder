@@ -1,5 +1,7 @@
-"Clear Author"
-Author reset.
+"Unload Jenkins Build Tools"
+Gofer new
+	package: 'HudsonBuildTools';
+	unload.
 !
 "Clear Monticello Caches"
 MCCacheRepository instVarNamed: 'default' put: nil.
@@ -8,6 +10,7 @@ MCMethodDefinition shutDown.
 MCDefinition clearInstances.
 !
 "Cleanup Smalltalk"
+Author reset.
 Smalltalk flushClassNameCache.
 Smalltalk organization removeEmptyCategories.
 Smalltalk allClassesAndTraitsDo: [ :each |

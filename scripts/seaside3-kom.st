@@ -15,4 +15,5 @@ Gofer new
 (WAComancheAdaptor port: 8080)
 	codec: GRPharoUtf8Codec new;
 	start.
-
+(Delay forMilliseconds: 2000)
+	wait

@@ -1,5 +1,6 @@
 "These tests kill the image"
-MethodContextTest removeSelector: #testClosureRestart.
+MethodDictionaryTest removeFromSystem.
+MethodContextTest removeFromSystem.
 !
 "Run all tests in the image"
 HDTestReport runCategories: Smalltalk organization categories.

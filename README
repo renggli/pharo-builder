@@ -63,7 +63,7 @@ Configure the new job
 - enter "**/*-Coverage.xml" into the text input labelled "Folders or files containing Emma XML reports"
 
 - in the "Post-build Actions" section, enable "Archive the artifacts"
-- enter the "Files to archive" as "**/*.image, **/*.changes, *.zip"
+- enter the "Files to archive" as "**/*.image, **/*.changes, **/*.zip"
 
 - save the configuration changes.
 

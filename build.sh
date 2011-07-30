@@ -86,6 +86,7 @@ while getopts ":i:o:s:?" OPT ; do
 		# output
 		o)	OUTPUT_NAME="$OPTARG"
 			OUTPUT_PATH="$BUILD_PATH/$OUTPUT_NAME"
+			OUTPUT_ZIP="$BUILD_PATH/$OUTPUT_NAME.zip"
 			OUTPUT_SCRIPT="$OUTPUT_PATH/$OUTPUT_NAME.st"
 			OUTPUT_IMAGE="$OUTPUT_PATH/$OUTPUT_NAME.image"
 			OUTPUT_CHANGES="$OUTPUT_PATH/$OUTPUT_NAME.changes"
@@ -169,8 +170,17 @@ else
 fi
 
 # remove cache link
-rm -f "$OUTPUT_CACHE"
-rm -f "$OUTPUT_PATH/*.sources"
+rm -rf "$OUTPUT_CACHE"
+rm -rf "$OUTPUT_SCRIPT"
+rm -rf "$OUTPUT_DEBUG"
+rm -rf "$OUTPUT_DUMP"
+rm -rf "$OUTPUT_PATH/*.sources"
+
+# archive changes and image
+(
+	cd "$OUTPUT_PATH"
+	zip -rq "$OUTPUT_ZIP" *
+)
 
 # success
 exit 0

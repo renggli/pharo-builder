@@ -170,13 +170,17 @@ else
 fi
 
 # remove cache link
-rm -rf "$OUTPUT_CACHE" "$OUTPUT_PATH/*.sources" "$OUTPUT_ZIP"
+rm -rf "$OUTPUT_CACHE" "$OUTPUT_ZIP"
+(
+	cd "$OUTPUT_PATH"
+	rm -f *.sources
+)
 
 # archive changes and image
 (
 	cd "$OUTPUT_PATH"
 	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
-	zip -qr "$OUTPUT_ZIP" "files" 1> /dev/null
+	[ -d "files" ] && zip -qr "$OUTPUT_ZIP" "files"
 )
 
 # success

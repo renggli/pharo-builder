@@ -24,4 +24,4 @@ Smalltalk
 	at: #WAServerAdaptorBrowser
 	ifPresent: [ :class |
 		class open.
-		SystemWindow topWindow position: 10 @ 120 ]
+		SystemWindow topWindow position: 10 @ 120 ].

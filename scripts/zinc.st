@@ -1,4 +1,4 @@
-"Zinc"
+"Load Zinc"
 Gofer new
 	squeaksource: 'ZincHTTPComponents';
 	package: 'Zinc-HTTP';

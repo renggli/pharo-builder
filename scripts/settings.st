@@ -1,4 +1,4 @@
-"Cleanup Environment"
+"Setup Environment"
 UIThemeWatery2 beCurrent.
 World color: Color white.
 World submorphs do: [ :each |

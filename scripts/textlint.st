@@ -23,4 +23,4 @@ PluggableButtonMorph new
 	actionSelector: #open;
 	label: 'Open TextLint';
 	top: morph bottom + 20;
-	left: 10; openInWorld
+	left: 10; openInWorld.

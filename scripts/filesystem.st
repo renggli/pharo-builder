@@ -11,4 +11,4 @@ Gofer new
 	package: 'FS-Tests-Disk';
 	package: 'FS-Tests-Memory';
 	package: 'FS-Zip';
-	load
+	load.

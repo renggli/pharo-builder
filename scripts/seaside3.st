@@ -107,7 +107,7 @@ Gofer new
 !
 "Addon Packages"
 Gofer new
-	squeaksource: 'Seaside30Addons'
+	squeaksource: 'Seaside30Addons';
 	package: 'Seaside-REST-Core';
 	package: 'Seaside-Pharo-REST-Core';
 	package: 'Seaside-Tests-REST-Core';

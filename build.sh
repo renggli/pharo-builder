@@ -180,7 +180,7 @@ rm -rf "$OUTPUT_PATH/*.sources"
 (
 	cd "$OUTPUT_PATH"
 	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
-	zip -qr "$OUTPUT_ZIP" "files"
+	zip -qr "$OUTPUT_ZIP" . -i "files"
 )
 
 # success

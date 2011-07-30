@@ -170,11 +170,7 @@ else
 fi
 
 # remove cache link
-rm -rf "$OUTPUT_CACHE"
-rm -rf "$OUTPUT_SCRIPT"
-rm -rf "$OUTPUT_DEBUG"
-rm -rf "$OUTPUT_DUMP"
-rm -rf "$OUTPUT_PATH/*.sources"
+rm -rf "$OUTPUT_CACHE" "$OUTPUT_PATH/*.sources" "$OUTPUT_ZIP"
 
 # archive changes and image
 (

@@ -176,7 +176,7 @@ rm -rf "$OUTPUT_CACHE" "$OUTPUT_PATH/*.sources" "$OUTPUT_ZIP"
 (
 	cd "$OUTPUT_PATH"
 	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
-	zip -qr "$OUTPUT_ZIP" . -i "files"
+	zip -qr "$OUTPUT_ZIP" . -i "files" 2> /dev/null
 )
 
 # success

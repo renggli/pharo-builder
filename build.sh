@@ -179,7 +179,8 @@ rm -rf "$OUTPUT_PATH/*.sources"
 # archive changes and image
 (
 	cd "$OUTPUT_PATH"
-	zip -qr "$OUTPUT_ZIP" "$(basename "$OUTPUT_IMAGE")" "$(basename "$OUTPUT_CHANGES")" "files"
+	zip -qj "$OUTPUT_ZIP" "$OUTPUT_IMAGE" "$OUTPUT_CHANGES"
+	zip -qr "$OUTPUT_ZIP" "files"
 )
 
 # success

@@ -49,7 +49,7 @@ Configure the new job
 - in the command textarea that appears, type the build specification:
 
   build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
-  build.sh -i omnibrowser -s testrunner -s omnibrowser-tests -o omnibrowser-tests
+  build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
 
   build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
 

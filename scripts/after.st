@@ -1,7 +1,9 @@
-"Unload Jenkins Build Tools"
-Gofer new
+"Unload Build Tools"
+[ Gofer new
 	package: 'HudsonBuildTools';
-	unload.
+	unload ]
+		on: Error
+		do: [ :err | "package not present" ].
 !
 "Clear Monticello Caches"
 MCCacheRepository instVarNamed: 'default' put: nil.
@@ -10,7 +12,6 @@ MCMethodDefinition shutDown.
 MCDefinition clearInstances.
 !
 "Cleanup Smalltalk"
-Author reset.
 Smalltalk flushClassNameCache.
 Smalltalk organization removeEmptyCategories.
 Smalltalk allClassesAndTraitsDo: [ :each |
@@ -18,6 +19,7 @@ Smalltalk allClassesAndTraitsDo: [ :each |
 	each class organization removeEmptyCategories; sortCategories ].
 !
 "Cleanup System Memory"
+Author reset.
 Smalltalk garbageCollect.
 Symbol compactSymbolTable.
 Deprecation raiseWarning: true.

@@ -4,7 +4,7 @@ Gofer new
 	package: 'PetitParser';
 	load.
 !
-"TextLint Seaside"
+"TextLint"
 Gofer new
 	squeaksource: 'textlint';
 	package: 'TextLint-Model';

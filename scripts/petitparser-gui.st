@@ -9,6 +9,7 @@ Gofer new
         package: 'Glamour-Morphic-Theme';
         package: 'Glamour-Morphic-Widgets';
         package: 'Glamour-Presentations';
+	package: 'Glamour-Tools';
         load.
 !
 "PetitParser"

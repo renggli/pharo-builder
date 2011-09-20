@@ -18,12 +18,14 @@ Gofer new
 Gofer new
 	renggli: 'pier2addons';
 	package: 'Pier-Setup';
+	package: 'Pier-Design';
 	package: 'Pier-Documents';
 	package: 'Pier-EditorEnh';
 	package: 'Pier-LinkChecker';
 	package: 'Pier-Google';
 	package: 'Pier-TagCloud';
 	package: 'Pier-JQuery';
+	package: 'Pier-Randomizer';
 	load.
 !
 "Setup Pier"

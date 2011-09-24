@@ -8,7 +8,6 @@ PSMCPatchMorph usedByDefault: false.
 SystemWindow fullScreenMargin: 0.
 WorldState showUpdateOptionInWorldMenu: false.
 UITheme currentSettings
-	selectionTextColor: Color black;
 	menuSelectionTextColor: Color white.
 UITheme currentAnimationSettings
 	useAnimation: false;

@@ -129,12 +129,12 @@ if [ -d "$OUTPUT_PATH" ] ; then
 fi
 mkdir -p "$OUTPUT_PATH"
 mkdir -p "$BUILD_CACHE/${JOB_NAME:=$OUTPUT_NAME}"
-ln -s "$BUILD_CACHE/${JOB_NAME:=$OUTPUT_NAME}" "$OUTPUT_CACHE"
+ln -sf "$BUILD_CACHE/${JOB_NAME:=$OUTPUT_NAME}" "$OUTPUT_CACHE"
 
 # prepare image file and sources
 cp "$INPUT_IMAGE" "$OUTPUT_IMAGE"
 cp "$INPUT_CHANGES" "$OUTPUT_CHANGES"
-find "$SOURCES_PATH" -name "*.sources" -exec ln "{}" "$OUTPUT_PATH/" \;
+find "$SOURCES_PATH" -name "*.sources" -exec ln -f "{}" "$OUTPUT_PATH/" \;
 
 # prepare script file
 SCRIPTS=("${SCRIPTS[@]}" "$SCRIPTS_PATH/after.st")

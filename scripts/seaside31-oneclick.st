@@ -14,6 +14,7 @@ SystemWindow topWindow
 			cr; cr;
 			nextPutAll: 'You can start and stop the server (and change the port) using the new Seaside Control Panel.' ]);
 	openLabel: 'Seaside ', GRPlatform current seasideVersion greaseString;
+	toggleStylingActive;
 	topView)
 		width: 450;
 		height: 210;

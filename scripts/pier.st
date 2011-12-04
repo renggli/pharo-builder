@@ -8,7 +8,7 @@
 	package: 'Pier-Security';
 	package: 'Pier-Squeak-Persistency';
 	load ]
-		valueSupplyingAnswers: { 
+		valueSupplyingAnswers: {
 			{ 'would you like'. true }.
 			{ 'pier kernel'. 'Pier' }.
 			{ 'entry point'. 'pier' }.

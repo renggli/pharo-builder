@@ -1,5 +1,5 @@
 "Unload Test Packages"
-(MCWorkingCopy allManagers 
+(MCWorkingCopy allManagers
 	inject: Gofer new
 	into: [ :gofer :each |
 		(each packageName includesSubString: 'Test')
@@ -8,7 +8,7 @@
 	unload.
 !
 "Unload Help Packages"
-(MCWorkingCopy allManagers 
+(MCWorkingCopy allManagers
 	inject: Gofer new
 	into: [ :gofer :each |
 		(each packageName includesSubString: 'Help')

@@ -25,7 +25,7 @@ Gofer new
 !
 "TextLint GUI"
 | stream image button |
-World submorphs do: [ :each | 
+World submorphs do: [ :each |
 	each class = TaskbarMorph
 		ifFalse: [ each delete ] ].
 stream := HTTPSocket httpGet: 'http://textlint.lukas-renggli.ch/images/logo.png'.

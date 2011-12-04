@@ -1,7 +1,7 @@
 "Background"
 | gradient |
-gradient := GradientFillStyle colors: (Array 
-	with: (Color gray: 0.05) 
+gradient := GradientFillStyle colors: (Array
+	with: (Color gray: 0.05)
 	with: (Color gray: 0.33)).
 gradient direction: 0 @ World height.
 gradient origin: 0 @ 0.
@@ -10,7 +10,7 @@ World fillStyle: gradient.
 !
 "Logo"
 | stream morph |
-World submorphs do: [ :each | 
+World submorphs do: [ :each |
 	each class = ImageMorph
 		ifTrue: [ each delete ] ].
 stream := HTTPSocket httpGet: 'http://www.seaside.st/files/3d/7g2rn53ickp4mxkfjn32kwgx8xpgmm/seaside-s.png'.

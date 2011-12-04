@@ -11,7 +11,7 @@ Gofer new
 	squeaksource: 'Seaside';
 	package: 'Seaside2' constraint: [ :ref | ref branch = '8a1' ];
 	load ]
-		valueSupplyingAnswers: { 
+		valueSupplyingAnswers: {
 			{ 'username'. 'admin' }.
 			{ 'password'. 'seaside' }.
 		}.

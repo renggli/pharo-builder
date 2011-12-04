@@ -11,17 +11,17 @@ Gofer new
 	package: 'Glamour-Presentations';
 	load.
 Gofer new
-        renggli: 'petit';
-        package: 'PetitParser';
-        load.
+	renggli: 'petit';
+	package: 'PetitParser';
+	load.
 !
 "TextLint"
 Gofer new
-        squeaksource: 'textlint';
-        package: 'TextLint-Model';
-        package: 'TextLint-View';
+	squeaksource: 'textlint';
+	package: 'TextLint-Model';
+	package: 'TextLint-View';
 	package: 'TextLint-Tests';
-        load.
+	load.
 !
 "TextLint GUI"
 | stream image button |

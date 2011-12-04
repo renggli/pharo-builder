@@ -8,13 +8,13 @@
 	package: 'Pier-Security';
 	package: 'Pier-Squeak-Persistency';
 	load ]
-	valueSupplyingAnswers: { 
-		{ 'would you like'. true }.
-		{ 'pier kernel'. 'Pier' }.
-		{ 'entry point'. 'pier' }.
-		{ 'port number'. '8080' }.
-		{ 'is running on'. nil }.
-	}.
+		valueSupplyingAnswers: { 
+			{ 'would you like'. true }.
+			{ 'pier kernel'. 'Pier' }.
+			{ 'entry point'. 'pier' }.
+			{ 'port number'. '8080' }.
+			{ 'is running on'. nil }.
+		}.
 !
 "Pier Addons"
 Gofer new

@@ -1,2 +1,6 @@
-HDTestReport runPackages: #('TextLint-Tests').
-HDLintReport runPackages: #('TextLint-Model').
+HDTestReport runPackages: #(
+	'TextLint-Tests'
+).
+HDLintReport runPackages: #(
+	'TextLint-Model'
+).

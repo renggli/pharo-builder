@@ -14,8 +14,9 @@ Gofer new
 Gofer new
 	renggli: 'omnibrowser';
 	package: 'OmniBrowser';
+	package: 'OB-Pharo-Platform';
+	package: 'OB-Polymorph';
 	package: 'OB-Standard';
-	package: 'OB-Morphic';
 	package: 'OB-Shout';
 	package: 'OB-Refactory';
 	package: 'OB-Regex';

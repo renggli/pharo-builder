@@ -16,7 +16,7 @@ Gofer new
 	package: 'BogusInfo';
 	package: 'OB-Fake';
 	package: 'OB-Tests-Core';
-	package: 'OB-Tests-Morphic';
+	package: 'OB-Tests-Polymorph';
 	package: 'OB-Tests-Standard';
 	package: 'OB-Tests-Refactory';
 	load.
@@ -28,5 +28,35 @@ Gofer new
 	load.
 !
 "Run the Refactoring and OmniBrowser Tests"
-HDTestReport runPackages: #('AST-Tests-Core' 'AST-Tests-Semantic' 'Refactoring-Tests-Core' 'Refactoring-Tests-Environment' 'Refactoring-Tests-Changes' 'Refactoring-Tests-Critics' 'Refactoring-Tests-Spelling' 'OB-Tests-Core' 'OB-Tests-Morphic' 'OB-Tests-Standard' 'OB-Tests-Refactory' 'RoelTyper' 'ECompletion' 'ShoutTests').
-HDLintReport runPackages: #('AST-Core' 'AST-Semantic' 'Refactoring-Core' 'Refactoring-Changes' 'Refactoring-Critics' 'Refactoring-Environment' 'Refactoring-Spelling' 'OmniBrowser' 'OB-Standard' 'OB-Morphic' 'OB-Shout' 'OB-Refactory' 'OB-Regex' 'OB-SUnitIntegration').
+HDTestReport runPackages: #(
+	'AST-Tests-Core'
+	'AST-Tests-Semantic'
+	'Refactoring-Tests-Core'
+	'Refactoring-Tests-Environment'
+	'Refactoring-Tests-Changes'
+	'Refactoring-Tests-Critics'
+	'Refactoring-Tests-Spelling'
+	'OB-Tests-Core'
+	'OB-Tests-Polymorph'
+	'OB-Tests-Standard'
+	'OB-Tests-Refactory'
+	'RoelTyper'
+	'ECompletion'
+	'ShoutTests'
+).
+HDLintReport runPackages: #(
+	'AST-Core'
+	'AST-Semantic'
+	'Refactoring-Core'
+	'Refactoring-Changes'
+	'Refactoring-Critics'
+	'Refactoring-Environment'
+	'Refactoring-Spelling'
+	'OmniBrowser'
+	'OB-Standard'
+	'OB-Polymorph'
+	'OB-Shout'
+	'OB-Refactory'
+	'OB-Regex'
+	'OB-SUnitIntegration'
+).

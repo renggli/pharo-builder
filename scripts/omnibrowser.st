@@ -8,6 +8,7 @@ Gofer new
 	package: 'Refactoring-Critics';
 	package: 'Refactoring-Environment';
 	package: 'Refactoring-Spelling';
+	package: 'Refactoring-Pharo-Platform';
 	load.
 !
 "OmniBrowser"

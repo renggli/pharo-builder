@@ -1,4 +1,4 @@
-"Brazil"
+"Chic"
 Gofer new
 	renggli: 'chic';
 	package: 'Chic-Core';

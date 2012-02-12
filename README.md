@@ -26,8 +26,8 @@ Similary build-oneclick.sh takes and input image and builds a one-click image fr
 PART B - Integrate with Jenkins
 ===============================
 
-- Download "jenkins.war" from http://jenkins-ci.org/.
-- Start the Jenkins server.
+- download "jenkins.war" from http://jenkins-ci.org/
+- start the Jenkins server
 - add build.sh to your path, so that can be easily called from within Jenkins
 - run Jenkins with something like:
 

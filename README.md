@@ -7,7 +7,7 @@ Install the support scripts, either by downloading the latest code directly from
 	
 You should get a directory structure with several empty directories, this readme file and several shell scripts.
 
-1. Get a distribution image from http://www.pharo-project.org/pharo-download and unzip the image in the "images" directory. You can also script that in your initial build-step and fetch the official stable images from http://pharo-project.org/pharo-download/stable-core or (http://pharo-project.org/pharo-download/stable.
+1. Get a distribution image from http://www.pharo-project.org/pharo-download and unzip the image in the "images" directory. You can also script that in your initial build-step and fetch the official stable images from http://pharo-project.org/pharo-download/stable-core or http://pharo-project.org/pharo-download/stable.
 
 2. Review or create your own build scripts in the directory "scripts". Use whatever loader you want: Gofer, Metacello, Mason, ... There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff and set settings. The sample builds scripts are a good starting point for creating your own build scripts for your own projects.
 
@@ -35,7 +35,7 @@ PART B - Integrate with Jenkins
         LOGFILE=jenkins.log
         nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
 - port 9090 is used to avoid conflict with Seaside on 8080
-- goto the Jenkins dashboard at http://localhost:9090
+- goto the Jenkins dashboard at http://localhost:9090/
 
 Add new Jenkins job
 -------------------
@@ -50,10 +50,10 @@ Configure the new job
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
 - in the command textarea that appears, type the build specification:
 
-    build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
-    build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
+        build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
+        build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
 
-    build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
+        build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
 - in the "Post-build Actions" section, enable "Publish Checkstyle analysis results" (requires the Checkstyle plugin to be installed)

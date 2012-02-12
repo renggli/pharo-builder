@@ -30,6 +30,7 @@ PART B - Integrate with Jenkins
 - Start the Jenkins server.
 - add build.sh to your path, so that can be easily called from within Jenkins
 - run Jenkins with something like:
+
         WARFILE=$HOME/apps/jenkins/jenkins.war
         LOGFILE=jenkins.log
         nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
@@ -49,10 +50,10 @@ Configure the new job
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
 - in the command textarea that appears, type the build specification:
 
-  build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
-  build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
+    build.sh -i PharoCore-1.0-10505rc1 -s omnibrowser -o omnibrowser
+    build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
 
-  build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
+    build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
 - in the "Post-build Actions" section, enable "Publish Checkstyle analysis results" (requires the Checkstyle plugin to be installed)

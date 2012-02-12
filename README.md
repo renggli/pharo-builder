@@ -30,9 +30,9 @@ PART B - Integrate with Jenkins
 - Start the Jenkins server.
 - add build.sh to your path, so that can be easily called from within Jenkins
 - run Jenkins with something like:
-    WARFILE=$HOME/apps/jenkins/jenkins.war
-    LOGFILE=jenkins.log
-    nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
+        WARFILE=$HOME/apps/jenkins/jenkins.war
+        LOGFILE=jenkins.log
+        nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
 - port 9090 is used to avoid conflict with Seaside on 8080
 - goto the Jenkins dashboard at http://localhost:9090
 

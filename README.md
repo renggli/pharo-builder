@@ -1,13 +1,13 @@
 PART A - Prepare image and adjust build scripts
 ===============================================
 
-Install the support scripts, either by downloading the latest code directly from GitHub (http://github.com/renggli/builder/zipball/master) or by cloning the Git repository:
+Install the support scripts, either by downloading the latest code directly from GitHub http://github.com/renggli/builder/zipball/master or by cloning the Git repository:
 
 	git clone git://github.com/renggli/builder.git
 	
 You should get a directory structure with several empty directories, this readme file and several shell scripts.
 
-1. Get a distribution image from (http://www.pharo-project.org/pharo-download) and unzip the image in the "images" directory. You can also script that in your initial build-step and fetch the official stable images from (http://pharo-project.org/pharo-download/stable-core) or (http://pharo-project.org/pharo-download/stable).
+1. Get a distribution image from http://www.pharo-project.org/pharo-download and unzip the image in the "images" directory. You can also script that in your initial build-step and fetch the official stable images from http://pharo-project.org/pharo-download/stable-core or (http://pharo-project.org/pharo-download/stable.
 
 2. Review or create your own build scripts in the directory "scripts". Use whatever loader you want: Gofer, Metacello, Mason, ... There are two special scripts, "before.st" is run prior to any build and "after.st" is run after any build. Make sure that the last action of the "after.st" script saves and quits the image. The other scripts load stuff and set settings. The sample builds scripts are a good starting point for creating your own build scripts for your own projects.
 
@@ -26,24 +26,26 @@ Similary build-oneclick.sh takes and input image and builds a one-click image fr
 PART B - Integrate with Jenkins
 ===============================
 
-Download "jenkins.war" from (http://jenkins-ci.org/).
+Download "jenkins.war" from http://jenkins-ci.org/.
 
 Start the Jenkins server.
-- add build.sh to your path, so that can be easily called from within Jenkins
-- run Jenkins with something like:
+* add build.sh to your path, so that can be easily called from within Jenkins
+* run Jenkins with something like:
     WARFILE=$HOME/apps/jenkins/jenkins.war
     LOGFILE=jenkins.log
     nohup java -jar $WARFILE --httpPort=9090 > $LOGFILE 2>&1 &
-- port 9090 is used to avoid conflict with Seaside on 8080
-- goto the Jenkins dashboard at http://localhost:9090
+* port 9090 is used to avoid conflict with Seaside on 8080
+* goto the Jenkins dashboard at http://localhost:9090
 
 Add new Jenkins job
+-------------------
 - from Jenkins dashboard, select "New Job"
 - fill in a job name, e.g. "Pharo"
 - choose the "Build as free-style software project" radio button
 - click on OK
 
 Configure the new job
+---------------------
 - you should be sent to the job configuration screen, after the previous step
 - in the "Build" section, click "Add build step", select "Execute shell" from dropdown menu
 - in the command textarea that appears, type the build specification:
@@ -52,22 +54,19 @@ Configure the new job
   build.sh -i omnibrowser -s buildtools -s omnibrowser-tests -o omnibrowser-tests
 
   build-oneclick.sh -i omnibrowser -o Pharo-OneClick -n Pharo -t "Pharo Development" -v 1.1 -c Pharo
-
 - in the "Post-build Actions" section, enable "Publish JUnit test result report"
 - enter "**/*-Test.xml" into the text input labelled "Test report XMLs" that appears.
-
 - in the "Post-build Actions" section, enable "Publish Checkstyle analysis results" (requires the Checkstyle plugin to be installed)
 - enter "**/*-Lint.xml" into the text input labelled "Checkstyle results"
 
 - in the "Post-build Actions" section, enable "Record Emma coverage report" (requires the Jenkins Emma plugin to be installed)
 - enter "**/*-Coverage.xml" into the text input labelled "Folders or files containing Emma XML reports"
-
 - in the "Post-build Actions" section, enable "Archive the artifacts"
 - enter the "Files to archive" as "**/*.image, **/*.changes, **/*.zip"
-
 - save the configuration changes.
 
 Run the build job
+-----------------
 - after saving the new job, you should already be in the new job's control screen. If not, you can navigate there from the dashboard.
 - start a build by clicking on the "Build Now" link
 

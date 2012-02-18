@@ -10,8 +10,6 @@ Gofer new
 	package: 'Pier-Tests-Security';
 	package: 'Pier-Pharo-Persistency';
 	package: 'Pier-Tests-Pharo-Persistency';
-	package: 'Pier-Blog';
-	package: 'Pier-Book';
 	load.
 !
 "Load Pier 3 Addons"
@@ -26,6 +24,8 @@ Gofer new
 	package: 'Pier-TagCloud';
 	package: 'Pier-JQuery';
 	package: 'Pier-Randomizer';
+        package: 'Pier-Blog';
+        package: 'Pier-Book';
 	load.
 !
 "Setup Pier"

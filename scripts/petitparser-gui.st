@@ -1,15 +1,15 @@
 "Glamour"
 Gofer new
 	squeaksource: 'Glamour';
-	package: 'Glamour-Announcements';
-	package: 'Glamour-Browsers';
-	package: 'Glamour-Core';
-	package: 'Glamour-Helpers';
-	package: 'Glamour-Morphic-Renderer';
-	package: 'Glamour-Morphic-Theme';
-	package: 'Glamour-Morphic-Widgets';
-	package: 'Glamour-Presentations';
-	package: 'Glamour-Tools';
+	version: 'Glamour-Announcements-TudorGirba.6';
+	version: 'Glamour-Browsers-TudorGirba.90';
+	version: 'Glamour-Core-TudorGirba.221';
+	version: 'Glamour-Helpers-TudorGirba.32';
+	version: 'Glamour-Morphic-Renderer-TudorGirba.139';
+	version: 'Glamour-Morphic-Theme-TudorGirba.55';
+	version: 'Glamour-Morphic-Widgets-TudorGirba.31';
+	version: 'Glamour-Presentations-TudorGirba.109';
+	version: 'Glamour-Tools-TudorGirba.50';
 	load.
 !
 "PetitParser"

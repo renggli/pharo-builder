@@ -71,6 +71,7 @@ Gofer new
 	squeaksource: 'Seaside31';
 	package: 'Javascript-Core';
 	package: 'Seaside-JSON-Core';
+	package: 'Seaside-Pharo-JSON-Core';
 	package: 'Javascript-Pharo-Core';
 	package: 'Javascript-Tests-Core';
 	package: 'Javascript-Tests-Pharo-Core';

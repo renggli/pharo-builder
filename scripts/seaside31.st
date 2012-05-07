@@ -78,6 +78,8 @@ Gofer new
 	package: 'Seaside-Tests-JSON';
 	package: 'JQuery-Core';
 	package: 'JQuery-Tests-Core';
+	package: 'JQuery-JSON';
+	package: 'JQuery-Tests-JSON';
 	package: 'JQuery-UI';
 	package: 'JQuery-Tests-UI';
 	package: 'Prototype-Core';

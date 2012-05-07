@@ -1,4 +1,4 @@
-HDTestReport runPackages: #(
+HDCoverageReport runPackages: #(
 	'Container-Tests-Core'
 ).
 HDLintReport runPackages: #(

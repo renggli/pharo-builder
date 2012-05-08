@@ -110,9 +110,9 @@ Gofer new
 	package: 'Seaside-Tests-Pharo-Email';
 	load.
 !
-"Addon Packages"
+"REST"
 Gofer new
-	squeaksource: 'Seaside31Addons';
+	squeaksource: 'Seaside31';
 	package: 'Seaside-REST-Core';
 	package: 'Seaside-Pharo-REST-Core';
 	package: 'Seaside-Tests-REST-Core';

@@ -9,8 +9,8 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>Squeak VM Opt</string>
-	<key>CFBundleGetInfoString</key>
-	<string>Squeak VM 4.2.5b1 http://www.squeak.org</string>
+	<key>CFBCundleGetInfoString</key>
+  <string>Croquet Cog VM 4.0.2559 http://www.mirandabanda.org</string>
 	<key>CFBundleIconFile</key>
 	<string>Squeak.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -31,6 +31,8 @@
 	<true/>
 	<key>LSBackgroundOnly</key>
 	<false/>
+  <key>LSMinimumSystemVersion</key>
+  <string>10.5.0</string>
 	<key>NSServices</key>
 	<array>
 	</array>
@@ -112,11 +114,9 @@
 	<true/>
 	<key>SqueakUnTrustedDirectory</key>
 	<string>~/Library/Preferences/Squeak/Internet/My Squeak/</string>
-	<key>SqueakUseFileMappedMMAP</key>
-	<false/>
 	<key>SqueakWindowAttribute</key>
 	<data>
-	ggAAHg==
+	ggAAHw==
 	</data>
 	<key>SqueakWindowHasTitle</key>
 	<true/>

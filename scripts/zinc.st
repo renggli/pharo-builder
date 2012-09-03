@@ -1,6 +1,7 @@
 "Load Zinc"
 Gofer new
 	squeaksource: 'ZincHTTPComponents';
+	package: 'Zinc-Pharo-Forward-Compatibility';
 	package: 'Zinc-HTTP';
         package: 'Zinc-FileSystem-Legacy';
 	package: 'Zinc-Tests';

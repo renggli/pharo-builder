@@ -24,8 +24,8 @@ Gofer new
 	package: 'Pier-TagCloud';
 	package: 'Pier-JQuery';
 	package: 'Pier-Randomizer';
-        package: 'Pier-Blog';
-        package: 'Pier-Book';
+	package: 'Pier-Blog';
+	package: 'Pier-Book';
 	load.
 !
 "Setup Pier"

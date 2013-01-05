@@ -18,4 +18,4 @@ Gofer new
 	package: 'PetitGui';
 	load.
 !
-PPBrowser open
+PPBrowser open.

@@ -10,12 +10,12 @@ Gofer new
 	load.
 !
 Gofer new
-	squeaksource: 'Seaside30LGPL';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30LGPL/main';
 	package: 'Seaside-Swazoo';
 	load.
 !
 Gofer new
-	squeaksource: 'Seaside31';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
 	package: 'Seaside-Adaptors-Swazoo';
 	load.
 !

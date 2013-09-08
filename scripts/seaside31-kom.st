@@ -6,7 +6,7 @@ Gofer new
 !
 "Komanche Adaptors"
 Gofer new
-	squeaksource: 'Seaside31';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
 	package: 'Seaside-Adaptors-Comanche';
 	package: 'Seaside-Tests-Adaptors-Comanche';
 	load.

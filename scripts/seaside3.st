@@ -1,6 +1,6 @@
 "Basic"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'Grease-Core';
 	package: 'Grease-Pharo-Core';
 	package: 'Grease-Tests-Core';
@@ -28,7 +28,7 @@ Gofer new
 !
 "Traditional"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'Seaside-Tests-Functional';
 	package: 'Seaside-Tests-Pharo-Functional';
 	package: 'Seaside-Pharo-Continuation';
@@ -49,7 +49,7 @@ Gofer new
 !
 "Development and Admin Tools"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'Grease-Slime';
 	package: 'Grease-Tests-Slime';
 	package: 'Seaside-Slime';
@@ -60,7 +60,7 @@ Gofer new
 !
 "RSS"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'RSS-Core';
 	package: 'RSS-Tests-Core';
 	package: 'RSS-Examples';
@@ -68,7 +68,7 @@ Gofer new
 !
 "Javascript"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'Javascript-Core';
 	package: 'Javascript-Pharo-Core';
 	package: 'Javascript-Tests-Core';
@@ -91,7 +91,7 @@ Gofer new
 !
 "Other Packages"
 Gofer new
-	squeaksource: 'Seaside30';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30/main';
 	package: 'Seaside-Welcome';
 	package: 'Seaside-Pharo-Welcome';
 	package: 'Seaside-Tests-Welcome';
@@ -107,7 +107,7 @@ Gofer new
 !
 "Addon Packages"
 Gofer new
-	squeaksource: 'Seaside30Addons';
+	url: 'http://smalltalkhub.com/mc/Seaside/Seaside30Addons/main';
 	package: 'Seaside-REST-Core';
 	package: 'Seaside-Pharo-REST-Core';
 	package: 'Seaside-Tests-REST-Core';

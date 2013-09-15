@@ -13,6 +13,7 @@ Gofer new
 	package: 'Seaside-Canvas';
 	package: 'Seaside-Pharo-Canvas';
 	package: 'Seaside-Tests-Canvas';
+	package: 'Seaside-Tests-Pharo-Canvas';
 	package: 'Seaside-Session';
 	package: 'Seaside-Tests-Session';
 	package: 'Seaside-Component';
@@ -76,6 +77,7 @@ Gofer new
 	package: 'Javascript-Tests-Core';
 	package: 'Javascript-Tests-Pharo-Core';
 	package: 'Seaside-Tests-JSON';
+	package: 'Seaside-Tests-Pharo-JSON-Core';
 	package: 'JQuery-Core';
 	package: 'JQuery-Tests-Core';
 	package: 'JQuery-JSON';

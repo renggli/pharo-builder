@@ -102,8 +102,6 @@ Gofer new
 	package: 'Seaside-Welcome';
 	package: 'Seaside-Pharo-Welcome';
 	package: 'Seaside-Tests-Welcome';
-	package: 'Seaside-HTML5';
-	package: 'Seaside-Tests-HTML5';
 	package: 'Seaside-InternetExplorer';
 	package: 'Seaside-Tests-InternetExplorer';
 	package: 'Seaside-Email';

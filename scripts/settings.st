@@ -1,5 +1,5 @@
 "Setup Environment"
-UIThemeWatery2 beCurrent.
+GLMUITheme beCurrent.
 World color: Color white.
 World submorphs do: [ :each |
 	(#(SketchMorph ImageMorph) includes: each class name)
@@ -12,3 +12,4 @@ UITheme currentSettings
 UITheme currentAnimationSettings
 	useAnimation: false;
 	animateClosing: false.
+

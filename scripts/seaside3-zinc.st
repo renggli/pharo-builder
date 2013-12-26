@@ -1,6 +1,10 @@
 "Zinc Server"
 Gofer new
-	squeaksource: 'ZincHTTPComponents';
+	url: 'http://mc.stfx.eu/ZincHTTPComponents';
+	package: 'Zinc-Character-Encoding-Core';
+	package: 'Zinc-Resource-Meta-Core';
+	package: 'Zinc-FileSystem-Legacy';
+	package: 'Zinc-Pharo-Forward-Compatibility';
 	package: 'Zinc-HTTP';
 	package: 'Zinc-Seaside';
 	load.
